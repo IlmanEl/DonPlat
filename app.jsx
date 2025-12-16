@@ -12,21 +12,25 @@ export default function ReferendumSVGBased() {
           <svg width="344" height="315" viewBox="0 0 344 315" fill="none" xmlns="http://www.w3.org/2000/svg" className="card-svg">
             <path d="M311 0C329.225 0 344 14.7746 344 33V177C344 202.405 323.405 223 298 223C272.595 223 252 243.595 252 269C252 294.405 231.405 315 206 315H33C14.7746 315 2.0537e-07 300.225 0 282V33C0 14.7746 14.7746 1.93278e-07 33 0H311Z" fill={`url(#${gradient})`}/>
             <defs>
-              <linearGradient id="gradient-purple" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#8B5CF6"/>
-                <stop offset="1" stopColor="#6D28D9"/>
+              <linearGradient id="gradient-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#A78BFA"/>
+                <stop offset="50%" stopColor="#8B5CF6"/>
+                <stop offset="100%" stopColor="#7C3AED"/>
               </linearGradient>
-              <linearGradient id="gradient-orange" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#F97316"/>
-                <stop offset="1" stopColor="#C2410C"/>
+              <linearGradient id="gradient-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#FB923C"/>
+                <stop offset="50%" stopColor="#F97316"/>
+                <stop offset="100%" stopColor="#EA580C"/>
               </linearGradient>
-              <linearGradient id="gradient-green" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#10B981"/>
-                <stop offset="1" stopColor="#047857"/>
+              <linearGradient id="gradient-green" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#34D399"/>
+                <stop offset="50%" stopColor="#10B981"/>
+                <stop offset="100%" stopColor="#059669"/>
               </linearGradient>
-              <linearGradient id="gradient-blue" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#3B82F6"/>
-                <stop offset="1" stopColor="#1D4ED8"/>
+              <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#60A5FA"/>
+                <stop offset="50%" stopColor="#3B82F6"/>
+                <stop offset="100%" stopColor="#2563EB"/>
               </linearGradient>
             </defs>
           </svg>
@@ -34,21 +38,25 @@ export default function ReferendumSVGBased() {
           <svg width="344" height="315" viewBox="0 0 344 315" fill="none" xmlns="http://www.w3.org/2000/svg" className="card-svg">
             <rect width="344" height="315" rx="33" fill={`url(#${gradient})`}/>
             <defs>
-              <linearGradient id="gradient-purple" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#8B5CF6"/>
-                <stop offset="1" stopColor="#6D28D9"/>
+              <linearGradient id="gradient-purple-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#A78BFA"/>
+                <stop offset="50%" stopColor="#8B5CF6"/>
+                <stop offset="100%" stopColor="#7C3AED"/>
               </linearGradient>
-              <linearGradient id="gradient-orange" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#F97316"/>
-                <stop offset="1" stopColor="#C2410C"/>
+              <linearGradient id="gradient-orange-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#FB923C"/>
+                <stop offset="50%" stopColor="#F97316"/>
+                <stop offset="100%" stopColor="#EA580C"/>
               </linearGradient>
-              <linearGradient id="gradient-green" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#10B981"/>
-                <stop offset="1" stopColor="#047857"/>
+              <linearGradient id="gradient-green-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#34D399"/>
+                <stop offset="50%" stopColor="#10B981"/>
+                <stop offset="100%" stopColor="#059669"/>
               </linearGradient>
-              <linearGradient id="gradient-blue" x1="4.5" y1="4.5" x2="344" y2="315" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#3B82F6"/>
-                <stop offset="1" stopColor="#1D4ED8"/>
+              <linearGradient id="gradient-blue-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#60A5FA"/>
+                <stop offset="50%" stopColor="#3B82F6"/>
+                <stop offset="100%" stopColor="#2563EB"/>
               </linearGradient>
             </defs>
           </svg>
@@ -60,7 +68,7 @@ export default function ReferendumSVGBased() {
         
         {hasNotch && (
           <button className="notch-button" style={{color: arrowColor}}>
-            <ArrowUp size={20} strokeWidth={3} />
+            <ArrowUp size={28} strokeWidth={3} />
           </button>
         )}
       </div>
@@ -500,8 +508,13 @@ export default function ReferendumSVGBased() {
           position: relative;
           width: 344px;
           height: 315px;
+          margin-bottom: 48px;
           transition: all 0.4s ease;
           filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.12));
+        }
+
+        .svg-card-wrapper:has(.notch-button) {
+          margin-bottom: 0;
         }
 
         .svg-card-wrapper:hover {
@@ -547,10 +560,17 @@ export default function ReferendumSVGBased() {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1.2px;
-          color: rgba(255, 255, 255, 0.9);
+          color: white;
           padding: 8px 14px;
           border-radius: 10px;
-          background: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .bookmark-icon {
@@ -558,7 +578,14 @@ export default function ReferendumSVGBased() {
           height: 40px;
           border-radius: 12px;
           border: none;
-          background: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -569,7 +596,11 @@ export default function ReferendumSVGBased() {
 
         .bookmark-icon:hover {
           transform: scale(1.05);
-          background: rgba(255, 255, 255, 0.25);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%);
+          box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.7),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .card-title {
@@ -611,24 +642,11 @@ export default function ReferendumSVGBased() {
 
         .progress-fill {
           height: 100%;
-          background: rgba(255, 255, 255, 0.95);
+          background: white;
           border-radius: 10px;
           transition: width 1.2s ease;
-          box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 24px rgba(255, 255, 255, 0.8);
           position: relative;
-        }
-
-        .progress-fill::after {
-          content: '';
-          position: absolute;
-          right: -4px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 16px;
-          height: 16px;
-          background: white;
-          border-radius: 50%;
-          box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
         }
 
         .progress-info {
@@ -674,7 +692,14 @@ export default function ReferendumSVGBased() {
           gap: 6px;
           padding: 8px 14px;
           border-radius: 10px;
-          background: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
           font-size: 14px;
           font-weight: 600;
           color: white;
@@ -716,7 +741,14 @@ export default function ReferendumSVGBased() {
           left: 24px;
           padding: 8px 14px;
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.2);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.7),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.3);
           color: white;
           font-size: 11px;
           font-weight: 700;
@@ -729,7 +761,14 @@ export default function ReferendumSVGBased() {
         .status-badge {
           padding: 8px 14px;
           border-radius: 10px;
-          background: rgba(255, 255, 255, 0.2);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
           color: white;
           font-size: 13px;
           font-weight: 700;
