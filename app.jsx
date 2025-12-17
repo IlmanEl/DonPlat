@@ -5,7 +5,7 @@ export default function ReferendumSVGBased() {
   const [showAll, setShowAll] = useState(false);
   const [activeFilter, setActiveFilter] = useState('active');
 
-  const SVGCard = ({ children, gradient, hasNotch = true, arrowColor = "#667EEA" }) => {
+  const SVGCard = ({ children, gradient, hasNotch = true, arrowColor = "#374151" }) => {
     return (
       <div className="svg-card-wrapper">
         {hasNotch ? (
@@ -85,7 +85,7 @@ export default function ReferendumSVGBased() {
       <header className="header">
         <div className="profile-section">
           <div className="avatar">
-            <img src="data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='24' fill='%23667EEA'/%3E%3Ctext x='24' y='30' font-family='Inter' font-weight='700' font-size='18' fill='white' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E" alt="avatar" />
+            <img src="data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='24' fill='%23374151'/%3E%3Ctext x='24' y='30' font-family='Inter' font-weight='700' font-size='18' fill='white' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E" alt="avatar" />
           </div>
           <div className="profile-info">
             <h1 className="username">@techblogger</h1>
@@ -473,7 +473,7 @@ export default function ReferendumSVGBased() {
           height: 48px;
           border-radius: 50%;
           overflow: hidden;
-          box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+          box-shadow: 0 8px 24px rgba(55, 65, 81, 0.25);
         }
 
         .avatar img {
@@ -572,9 +572,9 @@ export default function ReferendumSVGBased() {
         }
 
         .filter-btn.active {
-          background: #667EEA;
+          background: #374151;
           color: white;
-          box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+          box-shadow: 0 4px 16px rgba(55, 65, 81, 0.25);
         }
 
         .count {
@@ -918,7 +918,7 @@ export default function ReferendumSVGBased() {
         }
 
         .view-more-btn:hover {
-          color: #667EEA;
+          color: #374151;
           transform: translateY(-2px);
           box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
@@ -962,7 +962,7 @@ export default function ReferendumSVGBased() {
           border: none;
           font-size: 13px;
           font-weight: 600;
-          color: #667EEA;
+          color: #374151;
           cursor: pointer;
         }
 
@@ -1024,7 +1024,7 @@ export default function ReferendumSVGBased() {
         .leader-amount {
           font-size: 16px;
           font-weight: 800;
-          color: #667EEA;
+          color: #374151;
           letter-spacing: -0.3px;
         }
 
