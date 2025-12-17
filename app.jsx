@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bookmark, Users, Clock, ArrowUp, Award, Plus, Menu, CheckCircle } from 'lucide-react';
+import { Bookmark, Users, Clock, ArrowUp, Award, Plus, Menu, CheckCircle, Sparkles, Video, File } from 'lucide-react';
 
 export default function ReferendumSVGBased() {
   const [showAll, setShowAll] = useState(false);
@@ -35,8 +35,8 @@ export default function ReferendumSVGBased() {
             </defs>
           </svg>
         ) : (
-          <svg width="344" height="315" viewBox="0 0 344 315" fill="none" xmlns="http://www.w3.org/2000/svg" className="card-svg">
-            <rect width="344" height="315" rx="33" fill={`url(#${gradient})`}/>
+          <svg width="344" height="275" viewBox="0 0 344 275" fill="none" xmlns="http://www.w3.org/2000/svg" className="card-svg">
+            <rect width="344" height="275" rx="33" fill={`url(#${gradient})`}/>
             <defs>
               <linearGradient id="gradient-purple-2" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#A78BFA"/>
@@ -137,15 +137,19 @@ export default function ReferendumSVGBased() {
       <div className="topics-grid">
         {/* Card 1 - Purple */}
         <SVGCard gradient="gradient-purple" hasNotch={true} arrowColor="#8B5CF6">
-          <div className="card-header">
-            <div className="topic-category">VIDEO</div>
+          <div className="format-badge">
+            <Video size={12} strokeWidth={2.5} />
+            <span>VIDEO</span>
+          </div>
+
+          <div className="card-header-simple">
             <button className="bookmark-icon">
-              <Bookmark size={18} strokeWidth={2} />
+              <Bookmark size={14} strokeWidth={2} />
             </button>
           </div>
-          
+
           <h2 className="card-title">iPhone 16 Pro Deep Dive</h2>
-          
+
           <div className="progress-section">
             <div className="progress-header">
               <span className="progress-percent">75%</span>
@@ -174,17 +178,22 @@ export default function ReferendumSVGBased() {
 
         {/* Card 2 - Orange (Author Pick) */}
         <SVGCard gradient="gradient-orange" hasNotch={true} arrowColor="#F97316">
-          <div className="author-badge">
-            <Award size={12} />
-            <span>Creator Pick</span>
+          <div className="card-badges">
+            <div className="author-badge">
+              <Award size={12} />
+              <span>Creator Pick</span>
+            </div>
+            <div className="format-icon-badge">
+              <File size={12} strokeWidth={2.5} />
+            </div>
           </div>
-          
+
           <div className="card-header-simple">
             <button className="bookmark-icon">
-              <Bookmark size={18} strokeWidth={2} />
+              <Bookmark size={14} strokeWidth={2} />
             </button>
           </div>
-          
+
           <h2 className="card-title">MacBook M4 Review</h2>
           
           <div className="progress-section">
@@ -215,20 +224,25 @@ export default function ReferendumSVGBased() {
 
         {/* Card 3 - Green (Completed, NO notch) */}
         <SVGCard gradient="gradient-green" hasNotch={false}>
-          <div className="complete-badge">
-            <CheckCircle size={12} strokeWidth={2.5} />
-            <span>Completed</span>
+          <div className="card-badges">
+            <div className="complete-badge">
+              <CheckCircle size={12} strokeWidth={2.5} />
+              <span>Completed</span>
+            </div>
+            <div className="format-icon-badge">
+              <Video size={12} strokeWidth={2.5} />
+            </div>
           </div>
-          
+
           <div className="card-header-simple">
             <button className="bookmark-icon">
-              <Bookmark size={18} strokeWidth={2} />
+              <Bookmark size={14} strokeWidth={2} />
             </button>
           </div>
-          
+
           <h2 className="card-title">Investment Guide 2025</h2>
-          
-          <div className="progress-section">
+
+          <div className="progress-section compact">
             <div className="progress-track complete">
               <div className="progress-fill" style={{width: '100%'}}></div>
             </div>
@@ -238,12 +252,94 @@ export default function ReferendumSVGBased() {
             </div>
           </div>
 
+          <div className="card-meta compact">
+            <div className="meta-item">
+              <Users size={16} />
+              <span>31</span>
+            </div>
+            <div className="status-badge">In Progress</div>
+          </div>
+        </SVGCard>
+
+        {/* Card 4 - Blue */}
+        <SVGCard gradient="gradient-blue" hasNotch={true} arrowColor="#3B82F6">
+          <div className="format-badge">
+            <File size={12} strokeWidth={2.5} />
+            <span>ARTICLE</span>
+          </div>
+
+          <div className="card-header-simple">
+            <button className="bookmark-icon">
+              <Bookmark size={14} strokeWidth={2} />
+            </button>
+          </div>
+
+          <h2 className="card-title">AI Tools Comparison 2025</h2>
+
+          <div className="progress-section">
+            <div className="progress-header">
+              <span className="progress-percent">60%</span>
+            </div>
+            <div className="progress-track">
+              <div className="progress-fill" style={{width: '60%'}}></div>
+            </div>
+            <div className="progress-info">
+              <span className="funded">$60</span>
+              <span className="divider">/</span>
+              <span className="goal">$100</span>
+            </div>
+          </div>
+
           <div className="card-meta">
             <div className="meta-item">
               <Users size={16} />
-              <span>31 supporters</span>
+              <span>18</span>
             </div>
-            <div className="status-badge">In Progress</div>
+            <div className="meta-item">
+              <Clock size={16} />
+              <span>12 days left</span>
+            </div>
+          </div>
+        </SVGCard>
+
+        {/* Card 5 - Purple */}
+        <SVGCard gradient="gradient-purple" hasNotch={true} arrowColor="#8B5CF6">
+          <div className="format-badge">
+            <Video size={12} strokeWidth={2.5} />
+            <span>VIDEO</span>
+          </div>
+
+          <div className="card-header-simple">
+            <button className="bookmark-icon">
+              <Bookmark size={14} strokeWidth={2} />
+            </button>
+          </div>
+
+          <h2 className="card-title">Best Budget Laptops</h2>
+
+          <div className="progress-section">
+            <div className="progress-header">
+              <span className="progress-percent">30%</span>
+            </div>
+            <div className="progress-track">
+              <div className="progress-fill" style={{width: '30%'}}></div>
+            </div>
+            <div className="progress-info">
+              <span className="funded">$30</span>
+              <span className="divider">/</span>
+              <span className="goal">$100</span>
+            </div>
+          </div>
+
+          <div className="card-meta">
+            <div className="meta-item">
+              <Users size={16} />
+              <span>9</span>
+            </div>
+            <div className="meta-item">
+              <Clock size={16} />
+              <span>18 days left</span>
+            </div>
           </div>
         </SVGCard>
 
@@ -505,16 +601,14 @@ export default function ReferendumSVGBased() {
 
         /* SVG CARD SYSTEM */
         .svg-card-wrapper {
-          position: relative;
           width: 344px;
           height: 315px;
-          margin-bottom: 48px;
           transition: all 0.4s ease;
           filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.12));
         }
 
-        .svg-card-wrapper:has(.notch-button) {
-          margin-bottom: 0;
+        .svg-card-wrapper:not(:has(.notch-button)) {
+          height: 275px;
         }
 
         .svg-card-wrapper:hover {
@@ -546,13 +640,13 @@ export default function ReferendumSVGBased() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 12px;
+          margin-bottom: 16px;
         }
 
         .card-header-simple {
           display: flex;
           justify-content: flex-end;
-          margin-bottom: 12px;
+          margin-bottom: 16px;
         }
 
         .topic-category {
@@ -561,31 +655,25 @@ export default function ReferendumSVGBased() {
           text-transform: uppercase;
           letter-spacing: 1.2px;
           color: white;
-          padding: 8px 14px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+          padding: 6px 12px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .bookmark-icon {
-          width: 40px;
-          height: 40px;
-          border-radius: 12px;
+          width: 28px;
+          height: 28px;
+          border-radius: 6px;
           border: none;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -596,11 +684,8 @@ export default function ReferendumSVGBased() {
 
         .bookmark-icon:hover {
           transform: scale(1.05);
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%);
-          box-shadow:
-            0 12px 40px rgba(0, 0, 0, 0.16),
-            inset 0 1px 0 rgba(255, 255, 255, 0.7),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         }
 
         .card-title {
@@ -608,15 +693,27 @@ export default function ReferendumSVGBased() {
           font-weight: 800;
           line-height: 1.2;
           letter-spacing: -0.8px;
-          margin-bottom: 16px;
+          margin-bottom: 20px;
           color: white;
           min-height: 68px;
           display: flex;
           align-items: center;
         }
 
+        .svg-card-wrapper:has(.notch-button) .card-title {
+          margin-bottom: 12px;
+        }
+
         .progress-section {
           margin-bottom: 16px;
+        }
+
+        .progress-section.compact {
+          margin-bottom: 16px;
+        }
+
+        .card-meta.compact {
+          margin-top: 8px;
         }
 
         .progress-header {
@@ -626,9 +723,9 @@ export default function ReferendumSVGBased() {
         }
 
         .progress-percent {
-          font-size: 14px;
-          font-weight: 700;
-          color: rgba(255, 255, 255, 0.5);
+          font-size: 15px;
+          font-weight: 800;
+          color: rgba(255, 255, 255, 0.7);
           letter-spacing: 0.5px;
         }
 
@@ -636,7 +733,7 @@ export default function ReferendumSVGBased() {
           height: 8px;
           background: rgba(255, 255, 255, 0.2);
           border-radius: 10px;
-          overflow: hidden;
+          overflow: visible;
           margin-bottom: 10px;
         }
 
@@ -645,7 +742,12 @@ export default function ReferendumSVGBased() {
           background: white;
           border-radius: 10px;
           transition: width 1.2s ease;
-          box-shadow: 0 0 24px rgba(255, 255, 255, 0.8);
+          filter: blur(0.5px);
+          box-shadow:
+            0 0 20px 4px rgba(255, 255, 255, 0.6),
+            0 0 40px 8px rgba(255, 255, 255, 0.3),
+            0 0 60px 12px rgba(255, 255, 255, 0.1),
+            0 0 80px 16px rgba(255, 255, 255, 0.1);
           position: relative;
         }
 
@@ -669,14 +771,14 @@ export default function ReferendumSVGBased() {
 
         .divider {
           font-size: 20px;
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(255, 255, 255, 0.7);
           font-weight: 600;
         }
 
         .goal {
           font-size: 18px;
           font-weight: 600;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(255, 255, 255, 0.8);
         }
 
         .card-meta {
@@ -690,16 +792,13 @@ export default function ReferendumSVGBased() {
           display: flex;
           align-items: center;
           gap: 6px;
-          padding: 8px 14px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+          padding: 5px 10px;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
           font-size: 14px;
           font-weight: 600;
           color: white;
@@ -734,41 +833,67 @@ export default function ReferendumSVGBased() {
         }
 
         /* BADGES */
-        .author-badge,
-        .complete-badge {
+        .card-badges {
           position: absolute;
-          top: 20px;
+          top: 22px;
           left: 24px;
-          padding: 8px 14px;
-          border-radius: 12px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.5);
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.7),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.3);
-          color: white;
-          font-size: 11px;
-          font-weight: 700;
           display: flex;
+          gap: 8px;
           align-items: center;
-          gap: 5px;
           z-index: 2;
         }
 
+        .format-badge,
+        .format-icon-badge,
+        .author-badge,
+        .complete-badge {
+          padding: 6px 10px;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.18);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          color: white;
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .format-badge {
+          position: absolute;
+          top: 22px;
+          left: 24px;
+          z-index: 2;
+        }
+
+        .format-icon-badge {
+          padding: 7px 8px;
+        }
+
+        .format-badge svg,
+        .format-icon-badge svg {
+          opacity: 0.85;
+        }
+
+        .author-badge,
+        .complete-badge {
+          padding: 6px 12px;
+          font-size: 11px;
+          gap: 5px;
+        }
+
         .status-badge {
-          padding: 8px 14px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+          padding: 6px 12px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
           color: white;
           font-size: 13px;
           font-weight: 700;
@@ -948,3 +1073,4 @@ export default function ReferendumSVGBased() {
     </div>
   );
 }
+
