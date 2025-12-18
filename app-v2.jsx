@@ -376,7 +376,9 @@ export default function ProjectsV2() {
           font-weight: 900;
           color: white;
           line-height: 1.13;
-          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35), 0 4px 24px rgba(0, 0, 0, 0.25);
+          text-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.1),
+            0 2px 8px rgba(0, 0, 0, 0.15);
           z-index: 2;
           display: flex;
           flex-direction: column;
@@ -502,7 +504,7 @@ export default function ProjectsV2() {
           font-size: 18px;
           font-weight: 900;
           color: white;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
           letter-spacing: -0.5px;
         }
 
@@ -511,7 +513,7 @@ export default function ProjectsV2() {
           font-weight: 600;
           color: white;
           opacity: 0.85;
-          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Stats - Under Progress */
