@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Plus, Users } from 'lucide-react';
+import { Plus, Users, Twitter, Instagram, Youtube } from 'lucide-react';
 
 export default function ProjectsV2() {
+  const [activeFilter, setActiveFilter] = useState('active');
   const [projects] = useState([
     {
       id: 1,
-      title: 'iPhone 16 Pro Deep Dive',
+      title: 'скрипт который при мал кол-ве символов делает шрифт больше и наоборот ?',
       funded: 75,
       goal: 100,
       supporters: 22,
@@ -53,7 +54,17 @@ export default function ProjectsV2() {
         <div className="card-bg" style={{ backgroundImage: `url(${project.background})` }}>
 
           {/* Title - Top Left */}
-          <h2 className="title">{project.title}</h2>
+          <h2 className="title">
+            {project.title}
+            {project.title.includes('...') && (
+              <button className="read-more-btn">
+                <span>Read more</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            )}
+          </h2>
 
           {/* Badge - Top Right */}
           {project.completed ? (
@@ -88,9 +99,9 @@ export default function ProjectsV2() {
             )}
           </div>
 
-          {/* Plus Button - Bottom Right */}
+          {/* Donate Button - Bottom Right */}
           <button className="plus-btn">
-            <Plus size={24} strokeWidth={3} />
+            <span className="donate-amount">$5</span>
           </button>
         </div>
       </div>
@@ -110,6 +121,58 @@ export default function ProjectsV2() {
         </div>
       </header>
 
+      {/* Social Links */}
+      <div className="social-links">
+        <a href="#" className="social-icon">
+          <Twitter size={18} strokeWidth={2} />
+        </a>
+        <a href="#" className="social-icon">
+          <Instagram size={18} strokeWidth={2} />
+        </a>
+        <a href="#" className="social-icon">
+          <Youtube size={18} strokeWidth={2} />
+        </a>
+      </div>
+
+      {/* Stats Bar */}
+      <div className="stats-bar">
+        <div className="stat">
+          <div className="stat-value">32</div>
+          <div className="stat-label">Completed</div>
+        </div>
+        <div className="stat">
+          <div className="stat-value">2.4K</div>
+          <div className="stat-label">Supporters</div>
+        </div>
+        <div className="stat">
+          <div className="stat-value">$8.2K</div>
+          <div className="stat-label">Funded</div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="filters">
+        <button
+          className={`filter-btn ${activeFilter === 'active' ? 'active' : ''}`}
+          onClick={() => setActiveFilter('active')}
+        >
+          Active
+          <span className="count">4</span>
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === 'completed' ? 'active' : ''}`}
+          onClick={() => setActiveFilter('completed')}
+        >
+          Completed
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+          onClick={() => setActiveFilter('all')}
+        >
+          All
+        </button>
+      </div>
+
       {/* Projects Grid */}
       <div className="grid">
         {projects.map(project => (
@@ -117,8 +180,16 @@ export default function ProjectsV2() {
         ))}
       </div>
 
+      {/* Suggest Topic Button */}
+      <button className="fab">
+        <div className="fab-icon">
+          <Plus size={24} strokeWidth={2.5} />
+        </div>
+        <span className="fab-label">Suggest Topic</span>
+      </button>
+
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap');
 
         * {
           margin: 0;
@@ -131,7 +202,9 @@ export default function ProjectsV2() {
           min-height: 100vh;
           background: linear-gradient(to bottom, #FFFFFF 0%, #F3F4F6 100%);
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          padding: 24px 12px 60px 12px;
+          padding: 24px 0 80px 0;
+          max-width: 100vw;
+          overflow-x: hidden;
         }
 
         /* Header */
@@ -139,8 +212,8 @@ export default function ProjectsV2() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 32px;
-          padding: 0 8px;
+          margin-bottom: 24px;
+          padding: 0 16px;
         }
 
         .greeting {
@@ -177,6 +250,7 @@ export default function ProjectsV2() {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          padding: 0 16px;
         }
 
         /* Project Card */
@@ -215,6 +289,44 @@ export default function ProjectsV2() {
           letter-spacing: -1.4px;
           text-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
           z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .read-more-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          padding: 6px 12px;
+          background: rgba(255, 255, 255, 0.22);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1.5px solid rgba(255, 255, 255, 0.35);
+          border-radius: 12px;
+          color: white;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.3px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          align-self: flex-start;
+          margin-top: 4px;
+        }
+
+        .read-more-btn:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .read-more-btn svg {
+          transition: transform 0.2s ease;
+        }
+
+        .read-more-btn:hover svg {
+          transform: translateY(2px);
         }
 
         /* Badge - Top Right */
@@ -339,7 +451,7 @@ export default function ProjectsV2() {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        /* Plus Button - Bottom Right */
+        /* Donate Button - Bottom Right */
         .plus-btn {
           position: absolute;
           bottom: 12px;
@@ -353,10 +465,17 @@ export default function ProjectsV2() {
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: #374151;
           transition: all 0.2s ease;
           z-index: 4;
           box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .donate-amount {
+          font-family: 'Space Grotesk', 'Inter', sans-serif;
+          font-size: 24px;
+          font-weight: 700;
+          color: #374151;
+          letter-spacing: -0.5px;
         }
 
         .plus-btn:hover {
@@ -367,6 +486,174 @@ export default function ProjectsV2() {
 
         .plus-btn:active {
           transform: scale(0.95);
+        }
+
+        /* Social Links */
+        .social-links {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 24px;
+          padding: 0 16px;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #374151;
+          text-decoration: none;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          transition: all 0.2s ease;
+        }
+
+        .social-icon:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          color: #111827;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+          display: flex;
+          gap: 8px;
+          padding: 10px;
+          background: linear-gradient(to bottom, #FFFFFF, #F9FAFB);
+          border-radius: 20px;
+          margin: 0 16px 20px 16px;
+          box-shadow:
+            0 4px 16px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .stats-bar .stat {
+          flex: 1;
+          text-align: center;
+          padding: 10px 8px;
+          background: white;
+          border-radius: 12px;
+          box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.04),
+            inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .stats-bar .stat-value {
+          font-size: 16px;
+          font-weight: 700;
+          color: #111827;
+          letter-spacing: -0.3px;
+          margin-bottom: 2px;
+        }
+
+        .stats-bar .stat-label {
+          font-size: 8px;
+          font-weight: 600;
+          color: #6B7280;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+
+        /* Filters */
+        .filters {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 24px;
+          padding: 0 16px;
+        }
+
+        .filter-btn {
+          padding: 12px 18px;
+          border-radius: 14px;
+          border: none;
+          background: white;
+          font-size: 14px;
+          font-weight: 600;
+          color: #6B7280;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+          background: #374151;
+          color: white;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(55, 65, 81, 0.15);
+        }
+
+        .filter-btn.active {
+          background: #374151;
+          color: white;
+          box-shadow: 0 4px 16px rgba(55, 65, 81, 0.25);
+        }
+
+        .count {
+          padding: 3px 9px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .filter-btn.active .count,
+        .filter-btn:hover .count {
+          background: rgba(255, 255, 255, 0.25);
+          color: white;
+        }
+
+        .filter-btn:not(.active):not(:hover) .count {
+          background: #F3F4F6;
+          color: #6B7280;
+        }
+
+        /* Suggest Topic FAB */
+        .fab {
+          position: fixed;
+          bottom: 32px;
+          left: 16px;
+          right: 16px;
+          max-width: 398px;
+          margin: 0 auto;
+          height: 64px;
+          border-radius: 20px;
+          border: none;
+          background: #0F1419;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          cursor: pointer;
+          box-shadow: 0 12px 40px rgba(15, 20, 25, 0.3);
+          transition: all 0.3s ease;
+          z-index: 10;
+        }
+
+        .fab:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 48px rgba(15, 20, 25, 0.4);
+        }
+
+        .fab-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0F1419;
+        }
+
+        .fab-label {
+          font-size: 16px;
+          font-weight: 700;
+          color: white;
+          letter-spacing: -0.3px;
         }
 
         /* Responsive */
