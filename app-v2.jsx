@@ -349,6 +349,23 @@ export default function ProjectsV2() {
           padding: 32px 24px 24px 24px;
         }
 
+        .card-bg::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 60%;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.45) 0%,
+            rgba(0, 0, 0, 0.25) 40%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          z-index: 1;
+          pointer-events: none;
+        }
+
         /* Title - Top Left */
         .title {
           position: absolute;
