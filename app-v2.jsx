@@ -3,48 +3,111 @@ import { Plus, Users, Twitter, Instagram, Youtube } from 'lucide-react';
 
 export default function ProjectsV2() {
   const [activeFilter, setActiveFilter] = useState('active');
+  const [showMore, setShowMore] = useState(false);
   const [projects] = useState([
     {
       id: 1,
-      title: 'скрипт который при мал кол-ве символов делает шрифт больше и наоборот ?',
-      funded: 75,
+      title: 'Лучше до 30 я думаю делать запросы',
+      funded: 85,
       goal: 100,
-      supporters: 22,
-      daysLeft: 5,
+      supporters: 34,
+      daysLeft: 3,
       background: '/abstract-second.png',
-      type: 'VIDEO'
+      type: 'ОПРОС'
     },
     {
       id: 2,
-      title: 'MacBook M4 Review',
-      funded: 15,
+      title: 'Куда бы вложил $1000 прямо сейчас?',
+      funded: 92,
       goal: 100,
-      supporters: 4,
-      daysLeft: 25,
+      supporters: 47,
+      daysLeft: 5,
       background: '/abstract-first.png',
-      type: 'ARTICLE'
+      type: 'ОПРОС'
     },
     {
       id: 3,
-      title: 'Tech Guide 2025',
+      title: 'Кого из блогеров смотришь и почему?',
       funded: 120,
       goal: 100,
-      supporters: 31,
+      supporters: 56,
       completed: true,
       background: '/abstract-green.png',
-      type: 'VIDEO'
+      type: 'ОПРОС'
     },
     {
       id: 4,
-      title: 'AI Tools Review',
-      funded: 60,
+      title: 'Как ты справляешься с выгоранием?',
+      funded: 78,
       goal: 100,
-      supporters: 18,
+      supporters: 29,
+      daysLeft: 8,
+      background: '/Gemini_Generated_Image_sakktfsakktfsakk.png',
+      type: 'ОПРОС'
+    },
+    {
+      id: 5,
+      title: 'Покажи экран: какими аппами живешь?',
+      funded: 65,
+      goal: 100,
+      supporters: 23,
       daysLeft: 12,
+      background: '/Gemini_Generated_Image_tp1quatp1quatp1q.png',
+      type: 'ОПРОС'
+    },
+    {
+      id: 6,
+      title: 'Что думаешь про твит Маска?',
+      funded: 110,
+      goal: 100,
+      supporters: 62,
+      completed: true,
       background: '/abstract-first.png',
-      type: 'ARTICLE'
+      type: 'ОПРОС'
+    },
+    {
+      id: 7,
+      title: 'Лучшая покупка до $100, которую юзаешь каждый день',
+      funded: 88,
+      goal: 100,
+      supporters: 41,
+      daysLeft: 6,
+      background: '/abstract-second.png',
+      type: 'ОПРОС'
+    },
+    {
+      id: 8,
+      title: 'Разбери интервью у Дудя. Кто прав?',
+      funded: 95,
+      goal: 100,
+      supporters: 52,
+      daysLeft: 4,
+      background: '/abstract-green.png',
+      type: 'ОПРОС'
+    },
+    {
+      id: 9,
+      title: 'Тиндер в Европе: Реально найти кого-то?',
+      funded: 73,
+      goal: 100,
+      supporters: 31,
+      daysLeft: 10,
+      background: '/Gemini_Generated_Image_sakktfsakktfsakk.png',
+      type: 'ОПРОС'
+    },
+    {
+      id: 10,
+      title: 'Твой самый дорогой факап?',
+      funded: 82,
+      goal: 100,
+      supporters: 38,
+      daysLeft: 7,
+      background: '/Gemini_Generated_Image_tp1quatp1quatp1q.png',
+      type: 'ОПРОС'
     }
   ]);
+
+  const visibleProjects = showMore ? projects : projects.slice(0, 4);
 
   const ProjectCard = ({ project }) => {
     const progress = Math.min((project.funded / project.goal) * 100, 100);
@@ -58,7 +121,7 @@ export default function ProjectsV2() {
             {project.title}
             {project.title.includes('...') && (
               <button className="read-more-btn">
-                <span>Read more</span>
+                <span>Читать далее</span>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -68,7 +131,7 @@ export default function ProjectsV2() {
 
           {/* Badge - Top Right */}
           {project.completed ? (
-            <div className="badge completed">Completed</div>
+            <div className="badge completed">Завершен</div>
           ) : (
             <div className="badge info">{project.type}</div>
           )}
@@ -82,7 +145,7 @@ export default function ProjectsV2() {
             </div>
             <div className="progress-text">
               <div className="amount">${project.funded}/${project.goal}</div>
-              <div className="label">dollars</div>
+              <div className="label">долларов</div>
             </div>
           </div>
 
@@ -94,7 +157,7 @@ export default function ProjectsV2() {
             </div>
             {!project.completed && (
               <div className="stat">
-                <span>{project.daysLeft} days left</span>
+                <span>{project.daysLeft} {project.daysLeft === 1 ? 'день' : project.daysLeft < 5 ? 'дня' : 'дней'} осталось</span>
               </div>
             )}
           </div>
@@ -113,8 +176,8 @@ export default function ProjectsV2() {
       {/* Header */}
       <header className="header">
         <div>
-          <p className="greeting">Hello</p>
-          <h1 className="page-title">Michael's Projects</h1>
+          <p className="greeting">Привет</p>
+          <h1 className="page-title">Проекты Михаила</h1>
         </div>
         <div className="avatar">
           <img src="data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='32' cy='32' r='32' fill='%236B7FDB'/%3E%3Ctext x='32' y='40' font-family='Inter' font-weight='700' font-size='22' fill='white' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E" alt="avatar" />
@@ -138,15 +201,15 @@ export default function ProjectsV2() {
       <div className="stats-bar">
         <div className="stat">
           <div className="stat-value">32</div>
-          <div className="stat-label">Completed</div>
+          <div className="stat-label">Завершено</div>
         </div>
         <div className="stat">
           <div className="stat-value">2.4K</div>
-          <div className="stat-label">Supporters</div>
+          <div className="stat-label">Донатеров</div>
         </div>
         <div className="stat">
           <div className="stat-value">$8.2K</div>
-          <div className="stat-label">Funded</div>
+          <div className="stat-label">Собрано</div>
         </div>
       </div>
 
@@ -156,36 +219,46 @@ export default function ProjectsV2() {
           className={`filter-btn ${activeFilter === 'active' ? 'active' : ''}`}
           onClick={() => setActiveFilter('active')}
         >
-          Active
-          <span className="count">4</span>
+          Активные
+          <span className="count">8</span>
         </button>
         <button
           className={`filter-btn ${activeFilter === 'completed' ? 'active' : ''}`}
           onClick={() => setActiveFilter('completed')}
         >
-          Completed
+          Завершенные
         </button>
         <button
           className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
           onClick={() => setActiveFilter('all')}
         >
-          All
+          Все
         </button>
       </div>
 
       {/* Projects Grid */}
       <div className="grid">
-        {projects.map(project => (
+        {visibleProjects.map(project => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
+
+      {/* Show More Button */}
+      {!showMore && projects.length > 4 && (
+        <button className="show-more-btn" onClick={() => setShowMore(true)}>
+          <span>Показать больше</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
 
       {/* Suggest Topic Button */}
       <button className="fab">
         <div className="fab-icon">
           <Plus size={24} strokeWidth={2.5} />
         </div>
-        <span className="fab-label">Suggest Topic</span>
+        <span className="fab-label">Предложить тему</span>
       </button>
 
       <style jsx>{`
@@ -279,15 +352,14 @@ export default function ProjectsV2() {
         /* Title - Top Left */
         .title {
           position: absolute;
-          top: 32px;
+          top: 57px;
           left: 24px;
-          right: 140px;
-          font-size: 48px;
+          right: 24px;
+          font-size: 30px;
           font-weight: 900;
           color: white;
-          line-height: 0.95;
-          letter-spacing: -1.4px;
-          text-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+          line-height: 1.13;
+          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35), 0 4px 24px rgba(0, 0, 0, 0.25);
           z-index: 2;
           display: flex;
           flex-direction: column;
@@ -332,8 +404,8 @@ export default function ProjectsV2() {
         /* Badge - Top Right */
         .badge {
           position: absolute;
-          top: 24px;
-          right: 20px;
+          top: 16px;
+          right: 18px;
           padding: 10px 16px;
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
@@ -609,6 +681,43 @@ export default function ProjectsV2() {
         .filter-btn:not(.active):not(:hover) .count {
           background: #F3F4F6;
           color: #6B7280;
+        }
+
+        /* Show More Button */
+        .show-more-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: calc(100% - 32px);
+          margin: 24px 16px;
+          padding: 16px 24px;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 2px solid rgba(55, 65, 81, 0.1);
+          border-radius: 20px;
+          color: #374151;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
+        }
+
+        .show-more-btn:hover {
+          background: #374151;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(55, 65, 81, 0.2);
+        }
+
+        .show-more-btn svg {
+          transition: transform 0.3s ease;
+        }
+
+        .show-more-btn:hover svg {
+          transform: translateY(2px);
         }
 
         /* Suggest Topic FAB */
