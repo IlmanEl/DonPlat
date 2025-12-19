@@ -349,23 +349,6 @@ export default function ProjectsV2() {
           padding: 32px 24px 24px 24px;
         }
 
-        .card-bg::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 60%;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.45) 0%,
-            rgba(0, 0, 0, 0.25) 40%,
-            rgba(0, 0, 0, 0) 100%
-          );
-          z-index: 1;
-          pointer-events: none;
-        }
-
         /* Title - Top Left */
         .title {
           position: absolute;
@@ -377,8 +360,9 @@ export default function ProjectsV2() {
           color: white;
           line-height: 1.13;
           text-shadow:
-            0 1px 2px rgba(0, 0, 0, 0.1),
-            0 2px 8px rgba(0, 0, 0, 0.15);
+            0 2px 4px rgba(0, 0, 0, 0.2),
+            0 14px 22px rgba(0, 0, 0, 0.18),
+            0 8px 24px rgba(0, 0, 0, 0.12);
           z-index: 2;
           display: flex;
           flex-direction: column;
@@ -504,7 +488,9 @@ export default function ProjectsV2() {
           font-size: 18px;
           font-weight: 900;
           color: white;
-          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+          text-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.15),
+            0 2px 6px rgba(0, 0, 0, 0.12);
           letter-spacing: -0.5px;
         }
 
@@ -513,7 +499,9 @@ export default function ProjectsV2() {
           font-weight: 600;
           color: white;
           opacity: 0.85;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          text-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.12),
+            0 2px 4px rgba(0, 0, 0, 0.08);
         }
 
         /* Stats - Under Progress */
