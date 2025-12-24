@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ProjectsV2 from './app-v2.jsx';
+import ProjectsUnified from './app-unified.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ProjectsV2 />
+    <ProjectsUnified />
   </React.StrictMode>
 );
