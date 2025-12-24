@@ -203,7 +203,7 @@ export default function ProjectsUnified() {
             <div className="gradient-overlay" />
 
             {CardIcon && (
-              <div className={`urgency-pulse ${project.icon || 'urgency'}`}>
+              <div className="urgency-pulse">
                 <CardIcon size={16} />
               </div>
             )}
@@ -385,8 +385,9 @@ export default function ProjectsUnified() {
               <div className="avatar-ring" />
               <div className="avatar-ring-2" />
               <img
-                src="data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23000000;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23434343;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='22' fill='%23FFD700' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces"
                 alt="Михаил"
+                className="avatar-image"
               />
             </div>
           </div>
@@ -579,13 +580,21 @@ export default function ProjectsUnified() {
           --color-surface: #141414;
           --color-text: #FFFFFF;
           --color-text-dim: #888888;
-          --color-accent: #FFD700;
-          --color-accent-secondary: #00D9FF;
+          --color-accent-start: #FF6B35;
+          --color-accent-mid: #FFA500;
+          --color-accent-end: #FF6B9D;
           --color-success: #00FF88;
           --color-border: #222222;
+          --gradient-main: linear-gradient(135deg, #FF6B35 0%, #FFA500 50%, #FF6B9D 100%);
           --gradient-overlay: linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.9) 100%);
           --card-shadow: rgba(0, 0, 0, 0.6);
           --text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+          --greeting-opacity: 1;
+          --badge-text: #FF6B35;
+          --stat-pill-bg: rgba(255, 255, 255, 0.1);
+          --stat-pill-border: rgba(255, 255, 255, 0.2);
+          --currency-color: #FF6B35;
+          --progress-bg: rgba(255, 255, 255, 0.1);
         }
 
         /* LIGHT THEME */
@@ -593,14 +602,22 @@ export default function ProjectsUnified() {
           --color-bg: #F5F5F5;
           --color-surface: #FFFFFF;
           --color-text: #0A0A0A;
-          --color-text-dim: #666666;
-          --color-accent: #FFD700;
-          --color-accent-secondary: #00D9FF;
-          --color-success: #00FF88;
-          --color-border: #E0E0E0;
-          --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.9) 100%);
+          --color-text-dim: #4A4A4A;
+          --color-accent-start: #FF6B35;
+          --color-accent-mid: #FFA500;
+          --color-accent-end: #FF6B9D;
+          --color-success: #00B963;
+          --color-border: #D0D0D0;
+          --gradient-main: linear-gradient(135deg, #FF6B35 0%, #FFA500 50%, #FF6B9D 100%);
+          --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.92) 100%);
           --card-shadow: rgba(0, 0, 0, 0.15);
-          --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+          --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          --greeting-opacity: 0.9;
+          --badge-text: #D84315;
+          --stat-pill-bg: rgba(0, 0, 0, 0.08);
+          --stat-pill-border: rgba(0, 0, 0, 0.15);
+          --currency-color: #D84315;
+          --progress-bg: rgba(0, 0, 0, 0.08);
         }
 
         .app {
@@ -630,14 +647,14 @@ export default function ProjectsUnified() {
           position: relative;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           border-radius: 16px;
-          box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+          box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .theme-toggle:hover .theme-toggle-track {
-          box-shadow: 0 6px 24px rgba(255, 215, 0, 0.5);
+          box-shadow: 0 6px 24px rgba(255, 107, 53, 0.5);
           transform: translateY(-2px);
         }
 
@@ -649,6 +666,7 @@ export default function ProjectsUnified() {
           background: white;
           border-radius: 50%;
           transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .app.dark .theme-toggle-thumb {
@@ -704,7 +722,7 @@ export default function ProjectsUnified() {
         .header-glow-1 {
           width: 300px;
           height: 300px;
-          background: radial-gradient(circle, #FFD700, transparent);
+          background: radial-gradient(circle, #FF6B35, transparent);
           top: -100px;
           left: -50px;
         }
@@ -712,7 +730,7 @@ export default function ProjectsUnified() {
         .header-glow-2 {
           width: 250px;
           height: 250px;
-          background: radial-gradient(circle, #00D9FF, transparent);
+          background: radial-gradient(circle, #FF6B9D, transparent);
           top: -80px;
           right: -30px;
         }
@@ -721,8 +739,8 @@ export default function ProjectsUnified() {
           position: absolute;
           inset: 0;
           background: linear-gradient(180deg,
-            rgba(255, 215, 0, 0.08) 0%,
-            rgba(255, 215, 0, 0) 100%
+            rgba(255, 107, 53, 0.08) 0%,
+            rgba(255, 107, 53, 0) 100%
           );
         }
 
@@ -751,15 +769,17 @@ export default function ProjectsUnified() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
           font-weight: 700;
-          color: var(--color-accent);
+          color: var(--color-accent-start);
           text-transform: uppercase;
           letter-spacing: 2px;
+          opacity: var(--greeting-opacity);
         }
 
         .greeting-line {
           height: 1px;
           flex: 1;
-          background: linear-gradient(90deg, var(--color-accent), transparent);
+          background: linear-gradient(90deg, var(--color-accent-start), transparent);
+          opacity: 0.5;
         }
 
         .page-title {
@@ -822,23 +842,24 @@ export default function ProjectsUnified() {
           height: 64px;
         }
 
-        .avatar-container img {
+        .avatar-image {
           position: relative;
           width: 100%;
           height: 100%;
           border-radius: 16px;
           z-index: 2;
+          object-fit: cover;
           box-shadow:
             0 0 0 3px var(--color-bg),
-            0 0 0 3px var(--color-accent),
-            0 16px 32px rgba(0, 0, 0, 0.5);
+            0 0 0 4px var(--color-accent-start),
+            0 16px 32px rgba(0, 0, 0, 0.3);
         }
 
         .avatar-ring {
           position: absolute;
           inset: -5px;
           border-radius: 20px;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           opacity: 0.3;
           z-index: 1;
           animation: pulse 3s ease-in-out infinite;
@@ -848,7 +869,7 @@ export default function ProjectsUnified() {
           position: absolute;
           inset: -10px;
           border-radius: 24px;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           opacity: 0.15;
           z-index: 0;
           animation: pulse 3s ease-in-out infinite 0.5s;
@@ -906,7 +927,7 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          background: var(--color-accent);
+          background: var(--gradient-main);
           opacity: 0;
           transition: opacity 0.3s;
         }
@@ -918,9 +939,9 @@ export default function ProjectsUnified() {
         }
 
         .social-btn:hover {
-          border-color: var(--color-accent);
+          border-color: var(--color-accent-start);
           transform: translateY(-4px);
-          box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .social-btn:hover::before {
@@ -928,7 +949,7 @@ export default function ProjectsUnified() {
         }
 
         .social-btn:hover svg {
-          color: var(--color-accent);
+          color: var(--color-accent-start);
           transform: scale(1.1);
         }
 
@@ -972,16 +993,31 @@ export default function ProjectsUnified() {
           background: rgba(0, 255, 136, 0.05);
         }
 
+        .app.light .stat-icon.completed {
+          border-color: rgba(0, 185, 99, 0.2);
+          background: rgba(0, 185, 99, 0.08);
+        }
+
         .stat-icon.supporters {
           color: #FF6B9D;
           border-color: rgba(255, 107, 157, 0.2);
           background: rgba(255, 107, 157, 0.05);
         }
 
+        .app.light .stat-icon.supporters {
+          border-color: rgba(255, 107, 157, 0.25);
+          background: rgba(255, 107, 157, 0.08);
+        }
+
         .stat-icon.raised {
-          color: var(--color-accent);
-          border-color: rgba(255, 215, 0, 0.2);
-          background: rgba(255, 215, 0, 0.05);
+          color: var(--color-accent-start);
+          border-color: rgba(255, 107, 53, 0.2);
+          background: rgba(255, 107, 53, 0.05);
+        }
+
+        .app.light .stat-icon.raised {
+          border-color: rgba(255, 107, 53, 0.25);
+          background: rgba(255, 107, 53, 0.08);
         }
 
         .stat-content {
@@ -1045,7 +1081,7 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           opacity: 0;
           transition: opacity 0.3s;
         }
@@ -1056,12 +1092,12 @@ export default function ProjectsUnified() {
         }
 
         .filter-btn:hover {
-          border-color: var(--color-accent);
+          border-color: var(--color-accent-start);
           transform: translateY(-2px);
         }
 
         .filter-btn.active {
-          border-color: var(--color-accent);
+          border-color: var(--color-accent-start);
           color: var(--color-bg);
         }
 
@@ -1106,7 +1142,7 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
+          background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), transparent);
           opacity: 0;
           transition: opacity 0.4s;
           z-index: 1;
@@ -1115,8 +1151,15 @@ export default function ProjectsUnified() {
 
         .card-container:hover {
           transform: translateY(-8px);
-          border-color: var(--color-accent);
-          box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), 0 20px 60px var(--card-shadow);
+          border-color: var(--color-accent-start);
+        }
+
+        .app.dark .card-container:hover {
+          box-shadow: 0 0 40px rgba(255, 107, 53, 0.3), 0 20px 60px var(--card-shadow);
+        }
+
+        .app.light .card-container:hover {
+          box-shadow: 0 8px 32px rgba(255, 107, 53, 0.15), 0 20px 60px var(--card-shadow);
         }
 
         .card-container:hover::before {
@@ -1149,29 +1192,21 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--color-accent);
+          background: var(--gradient-main);
           border-radius: 10px;
-          color: var(--color-bg);
+          color: white;
           z-index: 3;
           animation: urgencyPulse 2s ease-in-out infinite;
-        }
-
-        .urgency-pulse.message {
-          background: #3B82F6;
-        }
-
-        .urgency-pulse.heart {
-          background: #EF4444;
         }
 
         @keyframes urgencyPulse {
           0%, 100% {
             transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+            box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
           }
           50% {
             transform: scale(1.05);
-            box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+            box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
           }
         }
 
@@ -1192,16 +1227,30 @@ export default function ProjectsUnified() {
           backdrop-filter: blur(10px);
         }
 
-        .badge.active {
-          background: rgba(255, 215, 0, 0.2);
-          border: 1px solid rgba(255, 215, 0, 0.4);
-          color: var(--color-accent);
+        .app.dark .badge.active {
+          background: rgba(255, 107, 53, 0.2);
+          border: 1px solid rgba(255, 107, 53, 0.4);
+          color: #FF6B35;
+        }
+
+        .app.light .badge.active {
+          background: rgba(255, 107, 53, 0.15);
+          border: 1px solid rgba(255, 107, 53, 0.3);
+          color: var(--badge-text);
+          font-weight: 900;
         }
 
         .badge.completed {
           background: rgba(0, 255, 136, 0.2);
           border: 1px solid rgba(0, 255, 136, 0.4);
           color: var(--color-success);
+        }
+
+        .app.light .badge.completed {
+          background: rgba(0, 185, 99, 0.15);
+          border: 1px solid rgba(0, 185, 99, 0.3);
+          color: #00874A;
+          font-weight: 900;
         }
 
         .title {
@@ -1231,9 +1280,9 @@ export default function ProjectsUnified() {
           align-items: center;
           gap: 8px;
           padding: 10px 16px;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--stat-pill-bg);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--stat-pill-border);
           border-radius: 10px;
           color: var(--color-text);
           font-family: 'JetBrains Mono', monospace;
@@ -1263,7 +1312,8 @@ export default function ProjectsUnified() {
         .currency {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 20px;
-          color: var(--color-accent);
+          color: var(--currency-color);
+          font-weight: 700;
         }
 
         .amount {
@@ -1287,12 +1337,12 @@ export default function ProjectsUnified() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
           font-weight: 800;
-          color: var(--color-bg);
+          color: white;
         }
 
         .progress-track {
           height: 10px;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--progress-bg);
           border-radius: 5px;
           overflow: hidden;
           position: relative;
@@ -1300,14 +1350,14 @@ export default function ProjectsUnified() {
 
         .progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           border-radius: 5px;
           position: relative;
           transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .progress-fill.overfunded {
-          background: linear-gradient(90deg, var(--color-success), var(--color-accent-secondary));
+          background: linear-gradient(90deg, var(--color-success), #00D9A3);
         }
 
         .progress-shine {
@@ -1342,13 +1392,21 @@ export default function ProjectsUnified() {
           cursor: pointer;
           z-index: 2;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
         .donate-btn:hover {
           transform: translateY(-3px);
-          box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 12px 36px rgba(0, 0, 0, 0.6);
-          background: var(--color-accent);
+          background: var(--gradient-main);
+          color: white;
+        }
+
+        .app.dark .donate-btn:hover {
+          box-shadow: 0 0 30px rgba(255, 107, 53, 0.4), 0 12px 36px rgba(0, 0, 0, 0.4);
+        }
+
+        .app.light .donate-btn:hover {
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .donate-text {
@@ -1397,7 +1455,7 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           opacity: 0;
           transition: opacity 0.3s;
         }
@@ -1408,9 +1466,9 @@ export default function ProjectsUnified() {
         }
 
         .show-more-btn:hover {
-          border-color: var(--color-accent);
+          border-color: var(--color-accent-start);
           transform: translateY(-4px);
-          box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+          box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
         }
 
         .show-more-btn:hover::before {
@@ -1450,7 +1508,7 @@ export default function ProjectsUnified() {
           left: 0;
           right: 0;
           height: 200px;
-          background: linear-gradient(180deg, rgba(255, 215, 0, 0.05), transparent);
+          background: linear-gradient(180deg, rgba(255, 107, 53, 0.05), transparent);
           pointer-events: none;
         }
 
@@ -1463,8 +1521,8 @@ export default function ProjectsUnified() {
         }
 
         .section-icon {
-          color: var(--color-accent);
-          filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+          color: var(--color-accent-start);
+          filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -1578,8 +1636,8 @@ export default function ProjectsUnified() {
         }
 
         .podium-position.first .podium-rank {
-          border-color: var(--color-accent);
-          color: var(--color-accent);
+          border-color: #FFD700;
+          color: #FFD700;
         }
 
         .podium-avatar {
@@ -1596,7 +1654,7 @@ export default function ProjectsUnified() {
           box-shadow:
             0 0 0 4px var(--color-bg),
             0 0 0 5px var(--color-border),
-            0 20px 40px rgba(0, 0, 0, 0.6);
+            0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .podium-position.first .podium-avatar {
@@ -1605,9 +1663,9 @@ export default function ProjectsUnified() {
           font-size: 28px;
           box-shadow:
             0 0 0 4px var(--color-bg),
-            0 0 0 6px var(--color-accent),
-            0 0 40px rgba(255, 215, 0, 0.4),
-            0 20px 50px rgba(0, 0, 0, 0.7);
+            0 0 0 6px #FFD700,
+            0 0 40px rgba(255, 215, 0, 0.3),
+            0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         .podium-badge {
@@ -1622,13 +1680,13 @@ export default function ProjectsUnified() {
           background: var(--color-bg);
           border: 2px solid var(--color-border);
           border-radius: 10px;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .podium-position.first .podium-badge {
           width: 44px;
           height: 44px;
-          border-color: var(--color-accent);
+          border-color: #FFD700;
         }
 
         .podium-name {
@@ -1643,7 +1701,7 @@ export default function ProjectsUnified() {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           line-height: 1;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -1675,7 +1733,7 @@ export default function ProjectsUnified() {
         }
 
         .podium-base.gold::before {
-          background: linear-gradient(180deg, var(--color-accent), transparent);
+          background: linear-gradient(180deg, #FFD700, transparent);
         }
 
         .podium-base.silver {
@@ -1734,9 +1792,9 @@ export default function ProjectsUnified() {
 
         .donor-card:hover {
           background: rgba(255, 255, 255, 0.05);
-          border-color: var(--color-accent);
+          border-color: var(--color-accent-start);
           transform: translateX(8px);
-          box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+          box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
         }
 
         .donor-rank-display {
@@ -1770,7 +1828,7 @@ export default function ProjectsUnified() {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 20px;
           color: white;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         .badge-icon {
@@ -1785,7 +1843,7 @@ export default function ProjectsUnified() {
           background: var(--color-bg);
           border: 2px solid var(--color-border);
           border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .streak-badge {
@@ -1796,13 +1854,13 @@ export default function ProjectsUnified() {
           align-items: center;
           gap: 2px;
           padding: 4px 8px;
-          background: var(--color-accent);
+          background: var(--gradient-main);
           border-radius: 6px;
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
           font-weight: 800;
-          color: var(--color-bg);
-          box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+          color: white;
+          box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
         }
 
         .donor-details {
@@ -1856,15 +1914,15 @@ export default function ProjectsUnified() {
           z-index: 100;
           overflow: hidden;
           box-shadow:
-            0 0 0 1px var(--color-accent),
-            0 16px 48px rgba(0, 0, 0, 0.7);
+            0 0 0 1px var(--color-accent-start),
+            0 16px 48px rgba(255, 107, 53, 0.3);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .fab-bg {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          background: var(--gradient-main);
         }
 
         .fab-content {
@@ -1877,7 +1935,7 @@ export default function ProjectsUnified() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 13px;
           font-weight: 800;
-          color: var(--color-bg);
+          color: white;
           text-transform: uppercase;
           letter-spacing: 0.8px;
           z-index: 1;
@@ -1886,9 +1944,9 @@ export default function ProjectsUnified() {
         .fab:hover {
           transform: translateX(-50%) translateY(-4px);
           box-shadow:
-            0 0 0 1px var(--color-accent),
-            0 0 50px rgba(255, 215, 0, 0.5),
-            0 24px 64px rgba(0, 0, 0, 0.8);
+            0 0 0 1px var(--color-accent-start),
+            0 0 50px rgba(255, 107, 53, 0.5),
+            0 24px 64px rgba(255, 107, 53, 0.4);
         }
 
         /* RESPONSIVE */
