@@ -9,7 +9,6 @@ export default function ProjectsUnified() {
 
   useEffect(() => {
     setMounted(true);
-    // Check localStorage for theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setIsDark(savedTheme === 'dark');
@@ -203,14 +202,12 @@ export default function ProjectsUnified() {
           <div className="card-bg" style={{ backgroundImage: `url(${project.background})` }}>
             <div className="gradient-overlay" />
 
-            {/* Icon Indicator */}
             {CardIcon && (
-              <div className={`card-icon-indicator ${project.icon || 'urgency'}`}>
-                <CardIcon size={16} strokeWidth={2.5} />
+              <div className={`urgency-pulse ${project.icon || 'urgency'}`}>
+                <CardIcon size={16} />
               </div>
             )}
 
-            {/* Badge */}
             {project.completed ? (
               <div className="badge completed">
                 <Award size={14} strokeWidth={2.5} />
@@ -223,10 +220,8 @@ export default function ProjectsUnified() {
               </div>
             )}
 
-            {/* Title */}
             <h2 className="title">{project.title}</h2>
 
-            {/* Stats Row */}
             <div className="stats-row">
               <div className="stat-pill">
                 <Users size={16} strokeWidth={2.5} />
@@ -240,7 +235,6 @@ export default function ProjectsUnified() {
               )}
             </div>
 
-            {/* Progress Section */}
             <div className="progress-section">
               <div className="progress-header">
                 <div className="amount-display">
@@ -264,7 +258,6 @@ export default function ProjectsUnified() {
               </div>
             </div>
 
-            {/* Donate Button */}
             <button className="donate-btn">
               <span className="donate-text">Поддержать</span>
               <div className="donate-amount">$5</div>
@@ -279,21 +272,21 @@ export default function ProjectsUnified() {
   const DonorCard = ({ donor, rank }) => {
     const getBadgeConfig = () => {
       if (donor.badge === 'gold') return {
-        color: isDark ? '#FFD700' : '#D4AF37',
-        gradient: isDark ? 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' : 'linear-gradient(135deg, #F4E4B7 0%, #D4AF37 100%)',
-        glow: isDark ? 'rgba(255, 215, 0, 0.4)' : 'rgba(212, 175, 55, 0.25)',
+        color: '#FFD700',
+        gradient: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+        glow: 'rgba(255, 215, 0, 0.4)',
         icon: Crown
       };
       if (donor.badge === 'silver') return {
-        color: isDark ? '#C0C0C0' : '#94A3B8',
-        gradient: isDark ? 'linear-gradient(135deg, #E8E8E8 0%, #A0A0A0 100%)' : 'linear-gradient(135deg, #E2E8F0 0%, #94A3B8 100%)',
-        glow: isDark ? 'rgba(192, 192, 192, 0.4)' : 'rgba(148, 163, 184, 0.25)',
+        color: '#C0C0C0',
+        gradient: 'linear-gradient(135deg, #E8E8E8 0%, #A0A0A0 100%)',
+        glow: 'rgba(192, 192, 192, 0.4)',
         icon: Award
       };
       if (donor.badge === 'bronze') return {
-        color: isDark ? '#CD7F32' : '#B87333',
-        gradient: isDark ? 'linear-gradient(135deg, #CD7F32 0%, #B5651D 100%)' : 'linear-gradient(135deg, #E5C5A8 0%, #B87333 100%)',
-        glow: isDark ? 'rgba(205, 127, 50, 0.4)' : 'rgba(184, 115, 51, 0.25)',
+        color: '#CD7F32',
+        gradient: 'linear-gradient(135deg, #CD7F32 0%, #B5651D 100%)',
+        glow: 'rgba(205, 127, 50, 0.4)',
         icon: Award
       };
       return {
@@ -359,20 +352,19 @@ export default function ProjectsUnified() {
     <div className={`app ${isDark ? 'dark' : 'light'}`}>
       {/* Theme Toggle Button */}
       <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-        <div className="theme-toggle-bg" />
-        <div className="theme-toggle-content">
-          {isDark ? (
-            <Sun size={20} strokeWidth={2.5} />
-          ) : (
-            <Moon size={20} strokeWidth={2.5} />
-          )}
+        <div className="theme-toggle-track">
+          <div className="theme-toggle-thumb" />
+          <div className="theme-toggle-icon">
+            {isDark ? <Sun size={16} strokeWidth={2.5} /> : <Moon size={16} strokeWidth={2.5} />}
+          </div>
         </div>
       </button>
 
       {/* Header */}
       <header className="header">
         <div className="header-bg">
-          <div className="header-pattern" />
+          <div className="header-glow header-glow-1" />
+          <div className="header-glow header-glow-2" />
           <div className="header-gradient" />
         </div>
 
@@ -393,18 +385,13 @@ export default function ProjectsUnified() {
               <div className="avatar-ring" />
               <div className="avatar-ring-2" />
               <img
-                src={isDark ?
-                  "data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23000000;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23434343;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='22' fill='%23FFD700' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E"
-                  :
-                  "data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23D4AF37;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23B8860B;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='22' fill='%23FFFFFF' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E"
-                }
+                src="data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23000000;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23434343;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23grad)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='22' fill='%23FFD700' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E"
                 alt="Михаил"
               />
             </div>
           </div>
         </div>
 
-        {/* Social Links */}
         <div className="social-links">
           <a href="#" className="social-btn twitter">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -435,7 +422,6 @@ export default function ProjectsUnified() {
             <div className="stat-label">Завершено</div>
           </div>
         </div>
-        <div className="stat-divider" />
         <div className="stat-item">
           <div className="stat-icon supporters">♥</div>
           <div className="stat-content">
@@ -443,7 +429,6 @@ export default function ProjectsUnified() {
             <div className="stat-label">Донатеров</div>
           </div>
         </div>
-        <div className="stat-divider" />
         <div className="stat-item">
           <div className="stat-icon raised">$</div>
           <div className="stat-content">
@@ -508,18 +493,13 @@ export default function ProjectsUnified() {
         </div>
 
         <div className="donors-podium">
-          {/* Second Place */}
           {topDonors[1] && (
             <div className="podium-position second">
               <div className="podium-rank">2</div>
-              <div className="podium-avatar" style={{
-                background: isDark ?
-                  'linear-gradient(135deg, #E8E8E8 0%, #A0A0A0 100%)' :
-                  'linear-gradient(135deg, #E2E8F0 0%, #94A3B8 100%)'
-              }}>
+              <div className="podium-avatar" style={{ background: 'linear-gradient(135deg, #E8E8E8 0%, #A0A0A0 100%)' }}>
                 <span>{topDonors[1].avatar}</span>
                 <div className="podium-badge">
-                  <Award size={20} strokeWidth={2.5} color={isDark ? '#C0C0C0' : '#94A3B8'} />
+                  <Award size={20} strokeWidth={2.5} color="#C0C0C0" />
                 </div>
               </div>
               <div className="podium-name">{topDonors[1].name}</div>
@@ -530,19 +510,14 @@ export default function ProjectsUnified() {
             </div>
           )}
 
-          {/* First Place */}
           {topDonors[0] && (
             <div className="podium-position first">
               <div className="champion-glow" />
               <div className="podium-rank">1</div>
-              <div className="podium-avatar" style={{
-                background: isDark ?
-                  'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' :
-                  'linear-gradient(135deg, #F4E4B7 0%, #D4AF37 100%)'
-              }}>
+              <div className="podium-avatar" style={{ background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' }}>
                 <span>{topDonors[0].avatar}</span>
                 <div className="podium-badge">
-                  <Crown size={24} strokeWidth={2.5} color={isDark ? '#FFD700' : '#D4AF37'} />
+                  <Crown size={24} strokeWidth={2.5} color="#FFD700" />
                 </div>
               </div>
               <div className="podium-name">{topDonors[0].name}</div>
@@ -553,18 +528,13 @@ export default function ProjectsUnified() {
             </div>
           )}
 
-          {/* Third Place */}
           {topDonors[2] && (
             <div className="podium-position third">
               <div className="podium-rank">3</div>
-              <div className="podium-avatar" style={{
-                background: isDark ?
-                  'linear-gradient(135deg, #CD7F32 0%, #B5651D 100%)' :
-                  'linear-gradient(135deg, #E5C5A8 0%, #B87333 100%)'
-              }}>
+              <div className="podium-avatar" style={{ background: 'linear-gradient(135deg, #CD7F32 0%, #B5651D 100%)' }}>
                 <span>{topDonors[2].avatar}</span>
                 <div className="podium-badge">
-                  <Award size={20} strokeWidth={2.5} color={isDark ? '#CD7F32' : '#B87333'} />
+                  <Award size={20} strokeWidth={2.5} color="#CD7F32" />
                 </div>
               </div>
               <div className="podium-name">{topDonors[2].name}</div>
@@ -576,7 +546,6 @@ export default function ProjectsUnified() {
           )}
         </div>
 
-        {/* Rest of donors */}
         <div className="donors-list">
           {topDonors.slice(3).map((donor, index) => (
             <DonorCard key={donor.id} donor={donor} rank={index + 4} />
@@ -594,7 +563,7 @@ export default function ProjectsUnified() {
       </button>
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
         * {
           margin: 0;
@@ -604,48 +573,40 @@ export default function ProjectsUnified() {
           -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Dark Theme Variables */
+        /* DARK THEME */
         .app.dark {
           --color-bg: #0A0A0A;
           --color-surface: #141414;
           --color-text: #FFFFFF;
-          --color-text-secondary: #888888;
-          --color-text-tertiary: #666666;
+          --color-text-dim: #888888;
           --color-accent: #FFD700;
-          --color-accent-alt: #00D9FF;
-          --color-accent-dark: #FFA500;
+          --color-accent-secondary: #00D9FF;
           --color-success: #00FF88;
           --color-border: #222222;
-          --color-shadow: rgba(0, 0, 0, 0.5);
-          --font-display: 'Bebas Neue', sans-serif;
-          --font-body: 'Manrope', sans-serif;
-          --font-mono: 'JetBrains Mono', monospace;
           --gradient-overlay: linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.9) 100%);
+          --card-shadow: rgba(0, 0, 0, 0.6);
+          --text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
         }
 
-        /* Light Theme Variables */
+        /* LIGHT THEME */
         .app.light {
-          --color-bg: #FAFAFA;
+          --color-bg: #F5F5F5;
           --color-surface: #FFFFFF;
           --color-text: #0A0A0A;
-          --color-text-secondary: #525252;
-          --color-text-tertiary: #A3A3A3;
-          --color-accent: #D4AF37;
-          --color-accent-alt: #B8860B;
-          --color-accent-dark: #B8860B;
-          --color-success: #059669;
-          --color-border: #E5E5E5;
-          --color-shadow: rgba(0, 0, 0, 0.08);
-          --font-display: 'Archivo Black', sans-serif;
-          --font-body: 'DM Sans', sans-serif;
-          --font-mono: 'Space Mono', monospace;
-          --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.95) 100%);
+          --color-text-dim: #666666;
+          --color-accent: #FFD700;
+          --color-accent-secondary: #00D9FF;
+          --color-success: #00FF88;
+          --color-border: #E0E0E0;
+          --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.9) 100%);
+          --card-shadow: rgba(0, 0, 0, 0.15);
+          --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .app {
           min-height: 100vh;
           background: var(--color-bg);
-          font-family: var(--font-body);
+          font-family: 'Manrope', sans-serif;
           padding-bottom: 120px;
           position: relative;
           transition: background-color 0.3s ease;
@@ -656,43 +617,66 @@ export default function ProjectsUnified() {
           position: fixed;
           top: 24px;
           right: 24px;
-          width: 52px;
-          height: 52px;
+          width: 56px;
+          height: 32px;
           border: none;
-          border-radius: 50%;
+          background: transparent;
           cursor: pointer;
           z-index: 1000;
-          overflow: hidden;
-          box-shadow: 0 4px 16px var(--color-shadow);
+          padding: 0;
+        }
+
+        .theme-toggle-track {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          border-radius: 16px;
+          box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .theme-toggle-bg {
-          position: absolute;
-          inset: 0;
-          background: var(--color-surface);
-          border: 2px solid var(--color-border);
-          border-radius: 50%;
+        .theme-toggle:hover .theme-toggle-track {
+          box-shadow: 0 6px 24px rgba(255, 215, 0, 0.5);
+          transform: translateY(-2px);
         }
 
-        .theme-toggle-content {
-          position: relative;
+        .theme-toggle-thumb {
+          position: absolute;
+          top: 4px;
+          width: 24px;
+          height: 24px;
+          background: white;
+          border-radius: 50%;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .app.dark .theme-toggle-thumb {
+          left: 4px;
+        }
+
+        .app.light .theme-toggle-thumb {
+          transform: translateX(24px);
+          left: 4px;
+        }
+
+        .theme-toggle-icon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: white;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 100%;
-          height: 100%;
-          color: var(--color-accent);
-          z-index: 1;
+          transition: all 0.3s;
         }
 
-        .theme-toggle:hover {
-          transform: scale(1.1) rotate(15deg);
-          box-shadow: 0 6px 24px var(--color-shadow);
+        .app.dark .theme-toggle-icon {
+          right: 8px;
         }
 
-        .theme-toggle:active {
-          transform: scale(0.95) rotate(-15deg);
+        .app.light .theme-toggle-icon {
+          left: 8px;
         }
 
         /* HEADER */
@@ -701,8 +685,6 @@ export default function ProjectsUnified() {
           padding: 32px 20px 24px;
           margin-bottom: 24px;
           overflow: hidden;
-          background: var(--color-surface);
-          border-bottom: 1px solid var(--color-border);
         }
 
         .header-bg {
@@ -711,22 +693,36 @@ export default function ProjectsUnified() {
           z-index: 0;
         }
 
-        .header-pattern {
+        .header-glow {
           position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(90deg, var(--color-accent) 1px, transparent 1px),
-            linear-gradient(var(--color-accent) 1px, transparent 1px);
-          background-size: 24px 24px;
-          opacity: 0.03;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.15;
+          pointer-events: none;
+        }
+
+        .header-glow-1 {
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, #FFD700, transparent);
+          top: -100px;
+          left: -50px;
+        }
+
+        .header-glow-2 {
+          width: 250px;
+          height: 250px;
+          background: radial-gradient(circle, #00D9FF, transparent);
+          top: -80px;
+          right: -30px;
         }
 
         .header-gradient {
           position: absolute;
           inset: 0;
           background: linear-gradient(180deg,
-            rgba(var(--accent-rgb, 212, 175, 55), 0.05) 0%,
-            transparent 100%
+            rgba(255, 215, 0, 0.08) 0%,
+            rgba(255, 215, 0, 0) 100%
           );
         }
 
@@ -752,19 +748,18 @@ export default function ProjectsUnified() {
         }
 
         .greeting-text {
-          font-family: var(--font-mono);
-          font-size: 10px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
           font-weight: 700;
-          color: var(--color-accent-dark);
+          color: var(--color-accent);
           text-transform: uppercase;
-          letter-spacing: 2.5px;
+          letter-spacing: 2px;
         }
 
         .greeting-line {
-          height: 2px;
+          height: 1px;
           flex: 1;
           background: linear-gradient(90deg, var(--color-accent), transparent);
-          opacity: 0.3;
         }
 
         .page-title {
@@ -774,23 +769,23 @@ export default function ProjectsUnified() {
         }
 
         .title-main {
-          font-family: var(--font-display);
-          font-size: clamp(52px, 13vw, 72px);
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: clamp(48px, 12vw, 64px);
           font-weight: 400;
-          line-height: 0.9;
+          line-height: 0.95;
           color: var(--color-text);
-          letter-spacing: -1px;
+          letter-spacing: 1px;
           text-transform: uppercase;
           animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
         }
 
         .title-sub {
-          font-family: var(--font-body);
-          font-size: clamp(13px, 3vw, 17px);
+          font-family: 'Manrope', sans-serif;
+          font-size: clamp(13px, 2.8vw, 16px);
           font-weight: 600;
-          color: var(--color-text-secondary);
-          letter-spacing: -0.2px;
-          margin-top: 8px;
+          color: var(--color-text-dim);
+          letter-spacing: 0.5px;
+          margin-top: 6px;
           animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
@@ -834,17 +829,17 @@ export default function ProjectsUnified() {
           border-radius: 16px;
           z-index: 2;
           box-shadow:
-            0 0 0 3px var(--color-surface),
-            0 0 0 4px var(--color-accent),
-            0 8px 24px var(--color-shadow);
+            0 0 0 3px var(--color-bg),
+            0 0 0 3px var(--color-accent),
+            0 16px 32px rgba(0, 0, 0, 0.5);
         }
 
         .avatar-ring {
           position: absolute;
           inset: -5px;
           border-radius: 20px;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
-          opacity: 0.2;
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          opacity: 0.3;
           z-index: 1;
           animation: pulse 3s ease-in-out infinite;
         }
@@ -853,8 +848,8 @@ export default function ProjectsUnified() {
           position: absolute;
           inset: -10px;
           border-radius: 24px;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
-          opacity: 0.1;
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+          opacity: 0.15;
           z-index: 0;
           animation: pulse 3s ease-in-out infinite 0.5s;
         }
@@ -862,11 +857,11 @@ export default function ProjectsUnified() {
         @keyframes pulse {
           0%, 100% {
             transform: scale(1);
-            opacity: 0.2;
+            opacity: 0.3;
           }
           50% {
             transform: scale(1.1);
-            opacity: 0.1;
+            opacity: 0.15;
           }
         }
 
@@ -899,13 +894,12 @@ export default function ProjectsUnified() {
           align-items: center;
           justify-content: center;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
-          border-radius: 12px;
-          color: var(--color-text-secondary);
+          border: 1px solid var(--color-border);
+          border-radius: 11px;
+          color: var(--color-text);
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           overflow: hidden;
-          box-shadow: 0 1px 3px var(--color-shadow);
         }
 
         .social-btn::before {
@@ -925,16 +919,16 @@ export default function ProjectsUnified() {
 
         .social-btn:hover {
           border-color: var(--color-accent);
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+          transform: translateY(-4px);
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .social-btn:hover::before {
-          opacity: 0.1;
+          opacity: 0.15;
         }
 
         .social-btn:hover svg {
-          color: var(--color-accent-dark);
+          color: var(--color-accent);
           transform: scale(1.1);
         }
 
@@ -944,11 +938,10 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           margin: 0 20px 24px;
-          padding: 20px 16px;
+          padding: 18px 14px;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
-          border-radius: 16px;
-          box-shadow: 0 2px 8px var(--color-shadow);
+          border: 1px solid var(--color-border);
+          border-radius: 14px;
           animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
         }
 
@@ -960,72 +953,35 @@ export default function ProjectsUnified() {
           min-width: 0;
         }
 
-        .stat-divider {
-          width: 1.5px;
-          height: 44px;
-          background: var(--color-border);
-          flex-shrink: 0;
-        }
-
         .stat-icon {
-          width: 44px;
-          height: 44px;
+          width: 40px;
+          height: 40px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 20px;
-          font-weight: 700;
-          border-radius: 12px;
-          border: 1.5px solid var(--color-border);
-        }
-
-        .app.dark .stat-icon {
+          border-radius: 10px;
           background: rgba(255, 255, 255, 0.05);
-        }
-
-        .app.light .stat-icon {
-          background: var(--color-bg);
+          border: 1px solid var(--color-border);
         }
 
         .stat-icon.completed {
           color: var(--color-success);
-          border-color: rgba(5, 150, 105, 0.2);
-        }
-
-        .app.dark .stat-icon.completed {
+          border-color: rgba(0, 255, 136, 0.2);
           background: rgba(0, 255, 136, 0.05);
         }
 
-        .app.light .stat-icon.completed {
-          background: #D1FAE5;
-        }
-
         .stat-icon.supporters {
-          border-color: rgba(255, 107, 157, 0.2);
-        }
-
-        .app.dark .stat-icon.supporters {
           color: #FF6B9D;
+          border-color: rgba(255, 107, 157, 0.2);
           background: rgba(255, 107, 157, 0.05);
         }
 
-        .app.light .stat-icon.supporters {
-          color: #DC2626;
-          background: #FEE2E2;
-        }
-
         .stat-icon.raised {
-          color: var(--color-accent-dark);
-          border-color: rgba(212, 175, 55, 0.2);
-        }
-
-        .app.dark .stat-icon.raised {
+          color: var(--color-accent);
+          border-color: rgba(255, 215, 0, 0.2);
           background: rgba(255, 215, 0, 0.05);
-        }
-
-        .app.light .stat-icon.raised {
-          background: #F4E4B7;
         }
 
         .stat-content {
@@ -1037,21 +993,21 @@ export default function ProjectsUnified() {
         }
 
         .stat-value {
-          font-family: var(--font-display);
-          font-size: 26px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
           line-height: 1;
           color: var(--color-text);
-          letter-spacing: -0.5px;
+          letter-spacing: 0.5px;
           white-space: nowrap;
         }
 
         .stat-label {
-          font-family: var(--font-mono);
+          font-family: 'JetBrains Mono', monospace;
           font-size: 9px;
           font-weight: 700;
-          color: var(--color-text-tertiary);
+          color: var(--color-text-dim);
           text-transform: uppercase;
-          letter-spacing: 0.8px;
+          letter-spacing: 0.5px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -1070,27 +1026,26 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           gap: 8px;
-          padding: 13px 20px;
+          padding: 12px 18px;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
-          border-radius: 12px;
-          font-family: var(--font-mono);
+          border: 1px solid var(--color-border);
+          border-radius: 11px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
           font-weight: 700;
-          color: var(--color-text-secondary);
+          color: var(--color-text-dim);
           text-transform: uppercase;
           letter-spacing: 0.5px;
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           overflow: hidden;
-          box-shadow: 0 1px 3px var(--color-shadow);
         }
 
         .filter-btn::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
           opacity: 0;
           transition: opacity 0.3s;
         }
@@ -1103,20 +1058,11 @@ export default function ProjectsUnified() {
         .filter-btn:hover {
           border-color: var(--color-accent);
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
         }
 
         .filter-btn.active {
-          border-color: var(--color-accent-dark);
-          box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
-        }
-
-        .app.dark .filter-btn.active {
+          border-color: var(--color-accent);
           color: var(--color-bg);
-        }
-
-        .app.light .filter-btn.active {
-          color: var(--color-surface);
         }
 
         .filter-btn.active::before {
@@ -1124,15 +1070,15 @@ export default function ProjectsUnified() {
         }
 
         .filter-count {
-          padding: 4px 9px;
-          background: rgba(0, 0, 0, 0.06);
-          border-radius: 7px;
+          padding: 4px 8px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 6px;
           font-size: 11px;
-          font-weight: 700;
+          font-weight: 800;
         }
 
         .filter-btn.active .filter-count {
-          background: rgba(255, 255, 255, 0.25);
+          background: rgba(0, 0, 0, 0.2);
         }
 
         /* PROJECTS GRID */
@@ -1152,8 +1098,7 @@ export default function ProjectsUnified() {
           border-radius: 20px;
           overflow: hidden;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
-          box-shadow: 0 2px 12px var(--color-shadow);
+          border: 1px solid var(--color-border);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -1161,29 +1106,21 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent) 0%, transparent 100%);
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent);
           opacity: 0;
           transition: opacity 0.4s;
           z-index: 1;
           pointer-events: none;
         }
 
-        .app.dark .card-container::before {
-          opacity: 0;
-        }
-
-        .app.light .card-container::before {
-          opacity: 0;
-        }
-
         .card-container:hover {
           transform: translateY(-8px);
           border-color: var(--color-accent);
-          box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+          box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), 0 20px 60px var(--card-shadow);
         }
 
         .card-container:hover::before {
-          opacity: 0.08;
+          opacity: 1;
         }
 
         .card-bg {
@@ -1201,52 +1138,40 @@ export default function ProjectsUnified() {
           inset: 0;
           background: var(--gradient-overlay);
           z-index: 1;
-          backdrop-filter: blur(1px);
         }
 
-        .card-icon-indicator {
+        .urgency-pulse {
           position: absolute;
           top: 20px;
           left: 20px;
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 11px;
+          background: var(--color-accent);
+          border-radius: 10px;
+          color: var(--color-bg);
           z-index: 3;
-          box-shadow: 0 4px 16px var(--color-shadow);
-          backdrop-filter: blur(12px);
-          border: 1.5px solid;
-        }
-
-        .card-icon-indicator.urgency {
-          background: rgba(212, 175, 55, 0.15);
-          border-color: rgba(212, 175, 55, 0.3);
-          color: var(--color-accent-dark);
           animation: urgencyPulse 2s ease-in-out infinite;
         }
 
-        .card-icon-indicator.message {
-          background: rgba(59, 130, 246, 0.15);
-          border-color: rgba(59, 130, 246, 0.3);
-          color: #1D4ED8;
+        .urgency-pulse.message {
+          background: #3B82F6;
         }
 
-        .card-icon-indicator.heart {
-          background: rgba(220, 38, 38, 0.15);
-          border-color: rgba(220, 38, 38, 0.3);
-          color: #DC2626;
+        .urgency-pulse.heart {
+          background: #EF4444;
         }
 
         @keyframes urgencyPulse {
           0%, 100% {
             transform: scale(1);
-            box-shadow: 0 4px 16px var(--color-shadow), 0 0 0 0 rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
           }
           50% {
             transform: scale(1.05);
-            box-shadow: 0 4px 16px var(--color-shadow), 0 0 0 8px rgba(212, 175, 55, 0);
+            box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
           }
         }
 
@@ -1257,49 +1182,40 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           gap: 6px;
-          padding: 11px 17px;
-          border-radius: 11px;
-          font-family: var(--font-mono);
+          padding: 10px 16px;
+          border-radius: 10px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 1px;
           z-index: 3;
-          backdrop-filter: blur(12px);
-          border: 1.5px solid;
-          box-shadow: 0 4px 16px var(--color-shadow);
+          backdrop-filter: blur(10px);
         }
 
         .badge.active {
-          background: rgba(212, 175, 55, 0.15);
-          border-color: rgba(212, 175, 55, 0.3);
-          color: var(--color-accent-dark);
+          background: rgba(255, 215, 0, 0.2);
+          border: 1px solid rgba(255, 215, 0, 0.4);
+          color: var(--color-accent);
         }
 
         .badge.completed {
-          background: rgba(5, 150, 105, 0.15);
-          border-color: rgba(5, 150, 105, 0.3);
+          background: rgba(0, 255, 136, 0.2);
+          border: 1px solid rgba(0, 255, 136, 0.4);
           color: var(--color-success);
         }
 
         .title {
           position: relative;
-          font-family: var(--font-body);
+          font-family: 'Manrope', sans-serif;
           font-size: clamp(26px, 5.5vw, 34px);
           line-height: 1.2;
-          font-weight: 900;
+          font-weight: 700;
           color: var(--color-text);
-          letter-spacing: -0.8px;
-          margin-top: 76px;
+          letter-spacing: -0.5px;
+          margin-top: 70px;
           margin-bottom: auto;
           z-index: 2;
-        }
-
-        .app.dark .title {
-          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-        }
-
-        .app.light .title {
-          text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
+          text-shadow: var(--text-shadow);
         }
 
         .stats-row {
@@ -1314,25 +1230,15 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           gap: 8px;
-          padding: 11px 17px;
-          backdrop-filter: blur(12px);
-          border: 1.5px solid;
-          border-radius: 11px;
+          padding: 10px 16px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 10px;
           color: var(--color-text);
-          font-family: var(--font-mono);
+          font-family: 'JetBrains Mono', monospace;
           font-size: 13px;
           font-weight: 700;
-          box-shadow: 0 2px 8px var(--color-shadow);
-        }
-
-        .app.dark .stat-pill {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .app.light .stat-pill {
-          background: rgba(255, 255, 255, 0.7);
-          border-color: rgba(0, 0, 0, 0.08);
         }
 
         .progress-section {
@@ -1355,68 +1261,59 @@ export default function ProjectsUnified() {
         }
 
         .currency {
-          font-family: var(--font-display);
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 20px;
-          color: var(--color-accent-dark);
+          color: var(--color-accent);
         }
 
         .amount {
-          font-family: var(--font-display);
-          font-size: 44px;
-          line-height: 0.95;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 40px;
+          line-height: 1;
           color: var(--color-text);
-          letter-spacing: -1px;
+          letter-spacing: 0.5px;
         }
 
         .goal {
-          font-family: var(--font-display);
-          font-size: 26px;
-          color: var(--color-text-secondary);
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
+          color: var(--color-text-dim);
         }
 
         .overfunded-badge {
-          padding: 6px 11px;
+          padding: 5px 10px;
           background: var(--color-success);
-          border-radius: 7px;
-          font-family: var(--font-mono);
+          border-radius: 6px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
-          font-weight: 700;
-          color: white;
-          box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+          font-weight: 800;
+          color: var(--color-bg);
         }
 
         .progress-track {
-          height: 11px;
-          border-radius: 6px;
+          height: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 5px;
           overflow: hidden;
           position: relative;
         }
 
-        .app.dark .progress-track {
-          background: rgba(255, 255, 255, 0.1);
-        }
-
-        .app.light .progress-track {
-          background: rgba(0, 0, 0, 0.06);
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
         .progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, var(--color-accent-dark), var(--color-accent));
-          border-radius: 6px;
+          background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+          border-radius: 5px;
           position: relative;
           transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .progress-fill.overfunded {
-          background: linear-gradient(90deg, var(--color-success), #34D399);
+          background: linear-gradient(90deg, var(--color-success), var(--color-accent-secondary));
         }
 
         .progress-shine {
           position: absolute;
           inset: 0;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
           animation: shine 2s ease-in-out infinite;
         }
 
@@ -1432,33 +1329,26 @@ export default function ProjectsUnified() {
           justify-content: space-between;
           gap: 12px;
           width: 100%;
-          padding: 17px 24px;
+          padding: 16px 24px;
           background: var(--color-text);
           border: none;
-          border-radius: 13px;
-          font-family: var(--font-mono);
+          border-radius: 12px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 13px;
-          font-weight: 700;
+          font-weight: 800;
+          color: var(--color-bg);
           text-transform: uppercase;
-          letter-spacing: 0.8px;
+          letter-spacing: 0.5px;
           cursor: pointer;
           z-index: 2;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .app.dark .donate-btn {
-          color: var(--color-bg);
-        }
-
-        .app.light .donate-btn {
-          color: var(--color-surface);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
         .donate-btn:hover {
           transform: translateY(-3px);
-          box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
-          background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+          box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 12px 36px rgba(0, 0, 0, 0.6);
+          background: var(--color-accent);
         }
 
         .donate-text {
@@ -1466,9 +1356,9 @@ export default function ProjectsUnified() {
         }
 
         .donate-amount {
-          font-family: var(--font-display);
-          font-size: 19px;
-          letter-spacing: -0.5px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 18px;
+          letter-spacing: 0.5px;
         }
 
         .donate-arrow {
@@ -1487,28 +1377,27 @@ export default function ProjectsUnified() {
           gap: 10px;
           width: calc(100% - 40px);
           margin: 0 20px 24px;
-          padding: 17px;
+          padding: 16px;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
-          border-radius: 13px;
-          font-family: var(--font-mono);
+          border: 1px solid var(--color-border);
+          border-radius: 12px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 12px;
-          font-weight: 700;
+          font-weight: 800;
           color: var(--color-text);
           text-transform: uppercase;
-          letter-spacing: 0.8px;
+          letter-spacing: 0.5px;
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
           overflow: hidden;
-          box-shadow: 0 2px 8px var(--color-shadow);
         }
 
         .show-more-btn::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-alt));
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
           opacity: 0;
           transition: opacity 0.3s;
         }
@@ -1520,39 +1409,38 @@ export default function ProjectsUnified() {
 
         .show-more-btn:hover {
           border-color: var(--color-accent);
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+          transform: translateY(-4px);
+          box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
 
         .show-more-btn:hover::before {
-          opacity: 0.1;
+          opacity: 0.15;
         }
 
         .show-more-icon {
-          width: 26px;
-          height: 26px;
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 7px;
-          background: rgba(0, 0, 0, 0.05);
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.1);
           transition: transform 0.3s;
         }
 
         .show-more-btn:hover .show-more-icon {
-          transform: translateY(3px);
+          transform: translateY(4px);
         }
 
         /* TOP DONORS */
         .top-donors-section {
-          margin: 40px 20px 24px;
-          padding: 36px 24px;
+          margin: 32px 20px 24px;
+          padding: 32px 24px;
           background: var(--color-surface);
-          border: 1.5px solid var(--color-border);
+          border: 1px solid var(--color-border);
           border-radius: 20px;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 2px 12px var(--color-shadow);
         }
 
         .top-donors-section::before {
@@ -1562,7 +1450,7 @@ export default function ProjectsUnified() {
           left: 0;
           right: 0;
           height: 200px;
-          background: linear-gradient(180deg, rgba(212, 175, 55, 0.06), transparent);
+          background: linear-gradient(180deg, rgba(255, 215, 0, 0.05), transparent);
           pointer-events: none;
         }
 
@@ -1570,19 +1458,19 @@ export default function ProjectsUnified() {
           position: relative;
           display: flex;
           align-items: center;
-          gap: 16px;
-          margin-bottom: 40px;
+          gap: 14px;
+          margin-bottom: 36px;
         }
 
         .section-icon {
-          color: var(--color-accent-dark);
-          filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+          color: var(--color-accent);
+          filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
           animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
+          50% { transform: translateY(-8px); }
         }
 
         .section-text {
@@ -1590,20 +1478,21 @@ export default function ProjectsUnified() {
         }
 
         .section-title {
-          font-family: var(--font-display);
-          font-size: 34px;
-          line-height: 0.95;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 32px;
+          line-height: 1;
           color: var(--color-text);
-          letter-spacing: -0.5px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
+          white-space: nowrap;
         }
 
         .section-subtitle {
-          font-family: var(--font-body);
-          font-size: 14px;
+          font-family: 'Manrope', sans-serif;
+          font-size: 13px;
           font-weight: 600;
-          color: var(--color-text-secondary);
+          color: var(--color-text-dim);
         }
 
         /* PODIUM */
@@ -1658,15 +1547,15 @@ export default function ProjectsUnified() {
           transform: translateX(-50%);
           width: 120px;
           height: 120px;
-          background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent);
+          background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
           border-radius: 50%;
           animation: championGlow 2s ease-in-out infinite;
           pointer-events: none;
         }
 
         @keyframes championGlow {
-          0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-          50% { opacity: 0.7; transform: translateX(-50%) scale(1.15); }
+          0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+          50% { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
         }
 
         .podium-rank {
@@ -1674,24 +1563,23 @@ export default function ProjectsUnified() {
           top: -12px;
           left: 50%;
           transform: translateX(-50%);
-          width: 34px;
-          height: 34px;
+          width: 32px;
+          height: 32px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--color-surface);
+          background: var(--color-bg);
           border: 2px solid var(--color-border);
-          border-radius: 9px;
-          font-family: var(--font-display);
+          border-radius: 8px;
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 18px;
           color: var(--color-text);
           z-index: 2;
-          box-shadow: 0 2px 8px var(--color-shadow);
         }
 
         .podium-position.first .podium-rank {
-          border-color: var(--color-accent-dark);
-          color: var(--color-accent-dark);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
         }
 
         .podium-avatar {
@@ -1702,13 +1590,13 @@ export default function ProjectsUnified() {
           align-items: center;
           justify-content: center;
           border-radius: 20px;
-          font-family: var(--font-display);
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           color: white;
           box-shadow:
-            0 0 0 4px var(--color-surface),
-            0 0 0 5.5px var(--color-border),
-            0 8px 24px var(--color-shadow);
+            0 0 0 4px var(--color-bg),
+            0 0 0 5px var(--color-border),
+            0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
         .podium-position.first .podium-avatar {
@@ -1716,10 +1604,10 @@ export default function ProjectsUnified() {
           height: 96px;
           font-size: 28px;
           box-shadow:
-            0 0 0 4px var(--color-surface),
-            0 0 0 6px var(--color-accent-dark),
-            0 0 20px rgba(212, 175, 55, 0.3),
-            0 12px 32px var(--color-shadow);
+            0 0 0 4px var(--color-bg),
+            0 0 0 6px var(--color-accent),
+            0 0 40px rgba(255, 215, 0, 0.4),
+            0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
         .podium-badge {
@@ -1731,20 +1619,20 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--color-surface);
+          background: var(--color-bg);
           border: 2px solid var(--color-border);
           border-radius: 10px;
-          box-shadow: 0 4px 12px var(--color-shadow);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
 
         .podium-position.first .podium-badge {
           width: 44px;
           height: 44px;
-          border-color: var(--color-accent-dark);
+          border-color: var(--color-accent);
         }
 
         .podium-name {
-          font-family: var(--font-body);
+          font-family: 'Manrope', sans-serif;
           font-size: 15px;
           font-weight: 700;
           color: var(--color-text);
@@ -1752,10 +1640,10 @@ export default function ProjectsUnified() {
         }
 
         .podium-amount {
-          font-family: var(--font-display);
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           line-height: 1;
-          background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -1768,7 +1656,7 @@ export default function ProjectsUnified() {
         .podium-base {
           width: 100%;
           border-radius: 12px 12px 0 0;
-          border: 1.5px solid var(--color-border);
+          border: 1px solid var(--color-border);
           border-bottom: none;
           position: relative;
           overflow: hidden;
@@ -1778,19 +1666,12 @@ export default function ProjectsUnified() {
           content: '';
           position: absolute;
           inset: 0;
-          opacity: 0.15;
+          opacity: 0.1;
         }
 
         .podium-base.gold {
-          border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .app.dark .podium-base.gold {
           background: linear-gradient(180deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
-        }
-
-        .app.light .podium-base.gold {
-          background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+          border-color: rgba(255, 215, 0, 0.3);
         }
 
         .podium-base.gold::before {
@@ -1798,35 +1679,21 @@ export default function ProjectsUnified() {
         }
 
         .podium-base.silver {
-          border-color: rgba(148, 163, 184, 0.3);
-        }
-
-        .app.dark .podium-base.silver {
           background: linear-gradient(180deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0.05));
-        }
-
-        .app.light .podium-base.silver {
-          background: linear-gradient(180deg, rgba(148, 163, 184, 0.15), rgba(148, 163, 184, 0.05));
+          border-color: rgba(192, 192, 192, 0.3);
         }
 
         .podium-base.silver::before {
-          background: linear-gradient(180deg, #94A3B8, transparent);
+          background: linear-gradient(180deg, #C0C0C0, transparent);
         }
 
         .podium-base.bronze {
-          border-color: rgba(184, 115, 51, 0.3);
-        }
-
-        .app.dark .podium-base.bronze {
           background: linear-gradient(180deg, rgba(205, 127, 50, 0.1), rgba(205, 127, 50, 0.05));
-        }
-
-        .app.light .podium-base.bronze {
-          background: linear-gradient(180deg, rgba(184, 115, 51, 0.15), rgba(184, 115, 51, 0.05));
+          border-color: rgba(205, 127, 50, 0.3);
         }
 
         .podium-base.bronze::before {
-          background: linear-gradient(180deg, #B87333, transparent);
+          background: linear-gradient(180deg, #CD7F32, transparent);
         }
 
         .podium-height {
@@ -1858,32 +1725,18 @@ export default function ProjectsUnified() {
           align-items: center;
           gap: 16px;
           padding: 20px;
-          border: 1.5px solid var(--color-border);
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid var(--color-border);
           border-radius: 16px;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
 
-        .app.dark .donor-card {
-          background: rgba(255, 255, 255, 0.02);
-        }
-
-        .app.light .donor-card {
-          background: var(--color-bg);
-        }
-
         .donor-card:hover {
-          border-color: var(--color-accent);
-          transform: translateX(6px);
-          box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
-        }
-
-        .app.light .donor-card:hover {
-          background: var(--color-surface);
-        }
-
-        .app.dark .donor-card:hover {
           background: rgba(255, 255, 255, 0.05);
+          border-color: var(--color-accent);
+          transform: translateX(8px);
+          box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
         }
 
         .donor-rank-display {
@@ -1891,13 +1744,13 @@ export default function ProjectsUnified() {
         }
 
         .rank-number {
-          width: 42px;
-          height: 42px;
+          width: 40px;
+          height: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 11px;
-          font-family: var(--font-display);
+          border-radius: 10px;
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 22px;
           color: white;
         }
@@ -1914,10 +1767,10 @@ export default function ProjectsUnified() {
           align-items: center;
           justify-content: center;
           border-radius: 14px;
-          font-family: var(--font-display);
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 20px;
           color: white;
-          box-shadow: 0 4px 16px var(--color-shadow);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
         .badge-icon {
@@ -1929,10 +1782,10 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--color-surface);
+          background: var(--color-bg);
           border: 2px solid var(--color-border);
           border-radius: 8px;
-          box-shadow: 0 2px 8px var(--color-shadow);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .streak-badge {
@@ -1942,14 +1795,14 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           gap: 2px;
-          padding: 5px 9px;
-          background: var(--color-accent-dark);
-          border-radius: 7px;
-          font-family: var(--font-mono);
+          padding: 4px 8px;
+          background: var(--color-accent);
+          border-radius: 6px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
-          font-weight: 700;
-          color: white;
-          box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+          font-weight: 800;
+          color: var(--color-bg);
+          box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
         }
 
         .donor-details {
@@ -1960,17 +1813,17 @@ export default function ProjectsUnified() {
         }
 
         .donor-name {
-          font-family: var(--font-body);
+          font-family: 'Manrope', sans-serif;
           font-size: 16px;
           font-weight: 700;
           color: var(--color-text);
         }
 
         .donor-meta {
-          font-family: var(--font-mono);
+          font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
           font-weight: 700;
-          color: var(--color-text-tertiary);
+          color: var(--color-text-dim);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
@@ -1980,7 +1833,7 @@ export default function ProjectsUnified() {
         }
 
         .amount-large {
-          font-family: var(--font-display);
+          font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           line-height: 1;
           -webkit-background-clip: text;
@@ -1998,20 +1851,20 @@ export default function ProjectsUnified() {
           max-width: 382px;
           padding: 0;
           border: none;
-          border-radius: 15px;
+          border-radius: 14px;
           cursor: pointer;
           z-index: 100;
           overflow: hidden;
           box-shadow:
-            0 0 0 1.5px var(--color-accent-dark),
-            0 8px 32px rgba(212, 175, 55, 0.3);
+            0 0 0 1px var(--color-accent),
+            0 16px 48px rgba(0, 0, 0, 0.7);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .fab-bg {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+          background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
         }
 
         .fab-content {
@@ -2020,22 +1873,22 @@ export default function ProjectsUnified() {
           align-items: center;
           justify-content: center;
           gap: 10px;
-          padding: 19px 24px;
-          font-family: var(--font-mono);
+          padding: 18px 24px;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 13px;
-          font-weight: 700;
-          color: white;
+          font-weight: 800;
+          color: var(--color-bg);
           text-transform: uppercase;
-          letter-spacing: 1px;
+          letter-spacing: 0.8px;
           z-index: 1;
         }
 
         .fab:hover {
           transform: translateX(-50%) translateY(-4px);
           box-shadow:
-            0 0 0 1.5px var(--color-accent-dark),
-            0 0 40px rgba(212, 175, 55, 0.5),
-            0 16px 48px rgba(212, 175, 55, 0.3);
+            0 0 0 1px var(--color-accent),
+            0 0 50px rgba(255, 215, 0, 0.5),
+            0 24px 64px rgba(0, 0, 0, 0.8);
         }
 
         /* RESPONSIVE */
