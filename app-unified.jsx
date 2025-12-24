@@ -238,7 +238,7 @@ export default function ProjectsUnified() {
             <div className="progress-section">
               <div className="progress-header">
                 <div className="amount-display">
-                  <span className="currency">$</span>
+                  <span className="currency">⭐</span>
                   <span className="amount">{project.funded}</span>
                   <span className="goal">/{project.goal}</span>
                 </div>
@@ -260,7 +260,7 @@ export default function ProjectsUnified() {
 
             <button className="donate-btn">
               <span className="donate-text">Поддержать</span>
-              <div className="donate-amount">$5</div>
+              <div className="donate-amount">5⭐</div>
               <ArrowUpRight className="donate-arrow" size={20} strokeWidth={2.5} />
             </button>
           </div>
@@ -341,7 +341,7 @@ export default function ProjectsUnified() {
 
         <div className="donor-amount-display">
           <div className="amount-large" style={{ background: config.gradient }}>
-            ${donor.amount.toLocaleString()}
+            {donor.amount.toLocaleString()}⭐
           </div>
         </div>
       </div>
@@ -371,7 +371,7 @@ export default function ProjectsUnified() {
         <div className="header-content">
           <div className="header-text">
             <div className="greeting">
-              <span className="greeting-text">Платформа</span>
+              <span className="greeting-text">DonPlat</span>
               <div className="greeting-line" />
             </div>
             <h1 className="page-title">
@@ -385,7 +385,7 @@ export default function ProjectsUnified() {
               <div className="avatar-ring" />
               <div className="avatar-ring-2" />
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces"
+                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&h=200&fit=crop&crop=faces"
                 alt="Михаил"
                 className="avatar-image"
               />
@@ -431,7 +431,7 @@ export default function ProjectsUnified() {
           </div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon raised">$</div>
+          <div className="stat-icon raised">⭐</div>
           <div className="stat-content">
             <div className="stat-value">8.2K</div>
             <div className="stat-label">Собрано</div>
@@ -504,7 +504,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[1].name}</div>
-              <div className="podium-amount">${topDonors[1].amount.toLocaleString()}</div>
+              <div className="podium-amount">{topDonors[1].amount.toLocaleString()}⭐</div>
               <div className="podium-base silver">
                 <div className="podium-height" />
               </div>
@@ -522,7 +522,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[0].name}</div>
-              <div className="podium-amount">${topDonors[0].amount.toLocaleString()}</div>
+              <div className="podium-amount">{topDonors[0].amount.toLocaleString()}⭐</div>
               <div className="podium-base gold">
                 <div className="podium-height" />
               </div>
@@ -539,7 +539,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[2].name}</div>
-              <div className="podium-amount">${topDonors[2].amount.toLocaleString()}</div>
+              <div className="podium-amount">{topDonors[2].amount.toLocaleString()}⭐</div>
               <div className="podium-base bronze">
                 <div className="podium-height" />
               </div>
@@ -580,12 +580,12 @@ export default function ProjectsUnified() {
           --color-surface: #141414;
           --color-text: #FFFFFF;
           --color-text-dim: #888888;
-          --color-accent-start: #FF6B35;
-          --color-accent-mid: #FFA500;
-          --color-accent-end: #FF6B9D;
+          --color-accent-start: #FF6B2C;
+          --color-accent-mid: #FF8C42;
+          --color-accent-end: #FFB366;
           --color-success: #00FF88;
           --color-border: #222222;
-          --gradient-main: linear-gradient(135deg, #FF6B35 0%, #FFA500 50%, #FF6B9D 100%);
+          --gradient-main: linear-gradient(135deg, #FF6B2C 0%, #FF8C42 50%, #FFB366 100%);
           --gradient-overlay: linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.9) 100%);
           --card-shadow: rgba(0, 0, 0, 0.6);
           --text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
@@ -603,12 +603,12 @@ export default function ProjectsUnified() {
           --color-surface: #FFFFFF;
           --color-text: #0A0A0A;
           --color-text-dim: #4A4A4A;
-          --color-accent-start: #FF6B35;
-          --color-accent-mid: #FFA500;
-          --color-accent-end: #FF6B9D;
+          --color-accent-start: #FF6B2C;
+          --color-accent-mid: #FF8C42;
+          --color-accent-end: #FFB366;
           --color-success: #00B963;
           --color-border: #D0D0D0;
-          --gradient-main: linear-gradient(135deg, #FF6B35 0%, #FFA500 50%, #FF6B9D 100%);
+          --gradient-main: linear-gradient(135deg, #FF6B2C 0%, #FF8C42 50%, #FFB366 100%);
           --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.92) 100%);
           --card-shadow: rgba(0, 0, 0, 0.15);
           --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -1228,14 +1228,14 @@ export default function ProjectsUnified() {
         }
 
         .app.dark .badge.active {
-          background: rgba(255, 107, 53, 0.2);
-          border: 1px solid rgba(255, 107, 53, 0.4);
-          color: #FF6B35;
+          background: rgba(255, 107, 44, 0.25);
+          border: 1px solid rgba(255, 140, 66, 0.5);
+          color: #FFB366;
         }
 
         .app.light .badge.active {
-          background: rgba(255, 107, 53, 0.15);
-          border: 1px solid rgba(255, 107, 53, 0.3);
+          background: rgba(255, 107, 44, 0.18);
+          border: 1px solid rgba(255, 107, 44, 0.35);
           color: var(--badge-text);
           font-weight: 900;
         }
@@ -1337,7 +1337,14 @@ export default function ProjectsUnified() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
           font-weight: 800;
-          color: white;
+        }
+
+        .app.dark .overfunded-badge {
+          color: #000000;
+        }
+
+        .app.light .overfunded-badge {
+          color: #FFFFFF;
         }
 
         .progress-track {
