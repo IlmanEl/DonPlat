@@ -1,5 +1,107 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Users, TrendingUp, Award, Crown, Sparkles, ArrowUpRight, Zap, MessageCircle, Heart, Moon, Sun } from 'lucide-react';
+import { Plus, Users, TrendingUp, Award, Crown, Sparkles, ArrowUpRight, Zap, MessageCircle, Heart, Moon, Sun, Check } from 'lucide-react';
+
+const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', className = '' }) => {
+  const uniqueId = `starGradient-${size}-${Math.random().toString(36).substr(2, 9)}`;
+
+  // Оригинальная форма звезды Telegram из SVG
+  const starPath = "M438.875 31.7736C459.784 -10.5911 520.194 -10.5913 541.103 31.7736L648.359 249.101C656.662 265.924 672.712 277.584 691.277 280.281L931.111 315.132C977.864 321.926 996.532 379.38 962.701 412.357L789.155 581.522C775.721 594.617 769.591 613.484 772.763 631.974L813.731 870.839C821.718 917.403 772.844 952.911 731.027 930.927L516.513 818.151C499.907 809.421 480.069 809.421 463.464 818.151L248.95 930.927C207.133 952.911 158.26 917.403 166.246 870.839L198.937 680.235L201 676.5C209.599 667.475 219.641 659.945 230.713 654.218L344.488 595.368L515.206 511.395C523.632 507.25 528.226 497.965 526.409 488.752C524.229 477.695 513.623 470.397 502.517 472.312L290.488 508.868L199.106 525.241C180.273 528.616 160.919 527.679 142.5 522.5L101.306 494.266L17.2754 412.357C-16.555 379.38 2.11369 321.926 48.8663 315.132L288.7 280.281C307.265 277.584 323.314 265.924 331.617 249.101L438.875 31.7736Z";
+
+  return (
+    <div className={`telegram-star-container ${className}`} style={{ width: size, height: size, position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 980 938"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ display: 'block' }}
+        preserveAspectRatio="xMidYMid meet"
+        shapeRendering="geometricPrecision"
+      >
+        <defs>
+          <linearGradient id={uniqueId} x1="490" y1="0" x2="490" y2="938" gradientUnits="userSpaceOnUse">
+            {color === 'white' ? (
+              <>
+                <stop offset="0%" stopColor="#FFFFFF" />
+                <stop offset="100%" stopColor="#F5F5F5" />
+              </>
+            ) : (
+              <>
+                <stop offset="0%" stopColor="#FFC837" />
+                <stop offset="25%" stopColor="#FFB332" />
+                <stop offset="50%" stopColor="#FFA726" />
+                <stop offset="75%" stopColor="#FF9800" />
+                <stop offset="100%" stopColor="#F57C00" />
+              </>
+            )}
+          </linearGradient>
+          <filter id={`glow-${uniqueId}`} x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <path
+          d={starPath}
+          fill={`url(#${uniqueId})`}
+          filter={color === 'white' ? 'none' : `url(#glow-${uniqueId})`}
+        />
+      </svg>
+      {withParticles && (
+        <>
+          {/* Маленькие звездочки */}
+          <div className="star-particle mini-star mini-star-1">
+            <svg width="8" height="8" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-star mini-star-2">
+            <svg width="10" height="10" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-star mini-star-3">
+            <svg width="7" height="7" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-star mini-star-4">
+            <svg width="9" height="9" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-star mini-star-5">
+            <svg width="6" height="6" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-star mini-star-6">
+            <svg width="8" height="8" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+
+          {/* Искорки */}
+          <div className="star-particle sparkle sparkle-1">
+            <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'currentColor' }}></div>
+          </div>
+          <div className="star-particle sparkle sparkle-2">
+            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
+          </div>
+          <div className="star-particle sparkle sparkle-3">
+            <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'currentColor' }}></div>
+          </div>
+          <div className="star-particle sparkle sparkle-4">
+            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default function ProjectsUnified() {
   const [activeFilter, setActiveFilter] = useState('active');
@@ -238,15 +340,15 @@ export default function ProjectsUnified() {
             <div className="progress-section">
               <div className="progress-header">
                 <div className="amount-display">
-                  <span className="currency">⭐</span>
+                  <span className="currency"><TelegramStar size={24} withParticles={true} /></span>
                   <span className="amount">{project.funded}</span>
                   <span className="goal">/{project.goal}</span>
-                </div>
                 {isOverfunded && (
                   <div className="overfunded-badge">
                     +{Math.round(((project.funded - project.goal) / project.goal) * 100)}%
                   </div>
                 )}
+                </div>
               </div>
               <div className="progress-track">
                 <div
@@ -260,7 +362,9 @@ export default function ProjectsUnified() {
 
             <button className="donate-btn">
               <span className="donate-text">Поддержать</span>
-              <div className="donate-amount">5⭐</div>
+              <div className="donate-amount">
+                5<TelegramStar size={20} color="white" className="donate-star" />
+              </div>
               <ArrowUpRight className="donate-arrow" size={20} strokeWidth={2.5} />
             </button>
           </div>
@@ -341,7 +445,7 @@ export default function ProjectsUnified() {
 
         <div className="donor-amount-display">
           <div className="amount-large" style={{ background: config.gradient }}>
-            {donor.amount.toLocaleString()}⭐
+            {donor.amount.toLocaleString()}<TelegramStar size={18} />
           </div>
         </div>
       </div>
@@ -375,7 +479,7 @@ export default function ProjectsUnified() {
               <div className="greeting-line" />
             </div>
             <h1 className="page-title">
-              <span className="title-main">Михаил</span>
+              <span className="title-main">Артур</span>
               <span className="title-sub">Проекты & Идеи</span>
             </h1>
           </div>
@@ -386,7 +490,7 @@ export default function ProjectsUnified() {
               <div className="avatar-ring-2" />
               <img
                 src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&h=200&fit=crop&crop=faces"
-                alt="Михаил"
+                alt="Артур"
                 className="avatar-image"
               />
             </div>
@@ -417,21 +521,27 @@ export default function ProjectsUnified() {
       {/* Stats Bar */}
       <div className="stats-bar">
         <div className="stat-item">
-          <div className="stat-icon completed">✓</div>
+          <div className="stat-icon completed">
+            <Check size={20} strokeWidth={3} />
+          </div>
           <div className="stat-content">
             <div className="stat-value">32</div>
             <div className="stat-label">Завершено</div>
           </div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon supporters">♥</div>
+          <div className="stat-icon supporters">
+            <Heart size={18} strokeWidth={2.5} fill="currentColor" />
+          </div>
           <div className="stat-content">
             <div className="stat-value">2.4K</div>
             <div className="stat-label">Донатеров</div>
           </div>
         </div>
         <div className="stat-item">
-          <div className="stat-icon raised">⭐</div>
+          <div className="stat-icon raised">
+            <TelegramStar size={20} />
+          </div>
           <div className="stat-content">
             <div className="stat-value">8.2K</div>
             <div className="stat-label">Собрано</div>
@@ -504,7 +614,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[1].name}</div>
-              <div className="podium-amount">{topDonors[1].amount.toLocaleString()}⭐</div>
+              <div className="podium-amount">{topDonors[1].amount.toLocaleString()}<TelegramStar size={20} /></div>
               <div className="podium-base silver">
                 <div className="podium-height" />
               </div>
@@ -522,7 +632,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[0].name}</div>
-              <div className="podium-amount">{topDonors[0].amount.toLocaleString()}⭐</div>
+              <div className="podium-amount">{topDonors[0].amount.toLocaleString()}<TelegramStar size={24} /></div>
               <div className="podium-base gold">
                 <div className="podium-height" />
               </div>
@@ -539,7 +649,7 @@ export default function ProjectsUnified() {
                 </div>
               </div>
               <div className="podium-name">{topDonors[2].name}</div>
-              <div className="podium-amount">{topDonors[2].amount.toLocaleString()}⭐</div>
+              <div className="podium-amount">{topDonors[2].amount.toLocaleString()}<TelegramStar size={20} /></div>
               <div className="podium-base bronze">
                 <div className="podium-height" />
               </div>
@@ -1305,15 +1415,14 @@ export default function ProjectsUnified() {
 
         .amount-display {
           display: flex;
-          align-items: baseline;
-          gap: 3px;
+          align-items: center;
+          gap: 8px;
         }
 
         .currency {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 20px;
-          color: var(--currency-color);
-          font-weight: 700;
+          display: flex;
+          align-items: center;
+          position: relative;
         }
 
         .amount {
@@ -1337,6 +1446,7 @@ export default function ProjectsUnified() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
           font-weight: 800;
+          margin-left: auto;
         }
 
         .app.dark .overfunded-badge {
@@ -1386,19 +1496,28 @@ export default function ProjectsUnified() {
           justify-content: space-between;
           gap: 12px;
           width: 100%;
-          padding: 16px 24px;
-          background: var(--color-text);
+          padding: 18px 24px;
           border: none;
           border-radius: 12px;
           font-family: 'JetBrains Mono', monospace;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 800;
-          color: var(--color-bg);
           text-transform: uppercase;
           letter-spacing: 0.5px;
           cursor: pointer;
           z-index: 2;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .app.dark .donate-btn {
+          background: white;
+          color: black;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .app.light .donate-btn {
+          background: black;
+          color: white;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
@@ -1422,8 +1541,11 @@ export default function ProjectsUnified() {
 
         .donate-amount {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 18px;
+          font-size: 22px;
           letter-spacing: 0.5px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .donate-arrow {
@@ -1712,6 +1834,9 @@ export default function ProjectsUnified() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          display: flex;
+          align-items: center;
+          gap: 4px;
         }
 
         .podium-position.first .podium-amount {
@@ -1904,6 +2029,344 @@ export default function ProjectsUnified() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        /* TELEGRAM STAR PARTICLES */
+        .telegram-star-container {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .star-particle {
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+
+        /* Цвета частичек в темной и светлой темах */
+        .app.dark .star-particle {
+          color: #FFE17B;
+          filter: drop-shadow(0 0 6px rgba(255, 225, 123, 0.8));
+        }
+
+        .app.light .star-particle {
+          color: #FF8C00;
+          filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.7));
+        }
+
+        /* Маленькие звездочки */
+        .mini-star {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .mini-star-1 {
+          top: -12px;
+          left: -10px;
+          animation: miniStarFloat1 4.5s ease-in-out infinite;
+        }
+
+        .mini-star-2 {
+          top: -14px;
+          right: -12px;
+          animation: miniStarFloat2 4s ease-in-out infinite 0.5s;
+        }
+
+        .mini-star-3 {
+          bottom: -10px;
+          left: -8px;
+          animation: miniStarFloat3 4.3s ease-in-out infinite 1s;
+        }
+
+        .mini-star-4 {
+          bottom: -12px;
+          right: -10px;
+          animation: miniStarFloat4 4.2s ease-in-out infinite 1.5s;
+        }
+
+        .mini-star-5 {
+          top: -10px;
+          left: 50%;
+          animation: miniStarFloat5 4.6s ease-in-out infinite 2s;
+        }
+
+        .mini-star-6 {
+          bottom: -10px;
+          right: 20%;
+          animation: miniStarFloat6 4.4s ease-in-out infinite 2.5s;
+        }
+
+        /* Искорки */
+        .sparkle-1 {
+          top: 50%;
+          left: -14px;
+          animation: sparkleFloat1 3.5s ease-in-out infinite 0.3s;
+        }
+
+        .sparkle-2 {
+          top: 50%;
+          right: -14px;
+          animation: sparkleFloat2 3.8s ease-in-out infinite 0.8s;
+        }
+
+        .sparkle-3 {
+          top: -16px;
+          left: 30%;
+          animation: sparkleFloat3 3.6s ease-in-out infinite 1.3s;
+        }
+
+        .sparkle-4 {
+          bottom: -16px;
+          right: 30%;
+          animation: sparkleFloat4 3.7s ease-in-out infinite 1.8s;
+        }
+
+        /* Анимации для маленьких звездочек */
+        @keyframes miniStarFloat1 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(-3px, -5px) scale(1) rotate(60deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(-5px, -10px) scale(1.2) rotate(120deg);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(-7px, -16px) scale(0.9) rotate(200deg);
+          }
+          70% {
+            opacity: 0.4;
+            transform: translate(-9px, -22px) scale(0.6) rotate(280deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(-10px, -26px) scale(0.3) rotate(340deg);
+          }
+        }
+
+        @keyframes miniStarFloat2 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(3px, -5px) scale(1) rotate(-50deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(6px, -10px) scale(1.3) rotate(-110deg);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(8px, -15px) scale(1) rotate(-190deg);
+          }
+          70% {
+            opacity: 0.4;
+            transform: translate(10px, -20px) scale(0.7) rotate(-270deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(11px, -24px) scale(0.35) rotate(-330deg);
+          }
+        }
+
+        @keyframes miniStarFloat3 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.85;
+            transform: translate(-2px, 4px) scale(0.9) rotate(40deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(-4px, 9px) scale(1.15) rotate(100deg);
+          }
+          50% {
+            opacity: 0.65;
+            transform: translate(-6px, 14px) scale(0.85) rotate(180deg);
+          }
+          70% {
+            opacity: 0.35;
+            transform: translate(-8px, 19px) scale(0.55) rotate(260deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(-9px, 23px) scale(0.25) rotate(320deg);
+          }
+        }
+
+        @keyframes miniStarFloat4 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(3px, 4px) scale(1.05) rotate(-55deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(6px, 10px) scale(1.25) rotate(-125deg);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(8px, 15px) scale(0.95) rotate(-210deg);
+          }
+          70% {
+            opacity: 0.4;
+            transform: translate(10px, 20px) scale(0.65) rotate(-290deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(11px, 24px) scale(0.3) rotate(-350deg);
+          }
+        }
+
+        @keyframes miniStarFloat5 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(-50%, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(-50%, -6px) scale(1) rotate(70deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(-50%, -12px) scale(1.4) rotate(150deg);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(-50%, -18px) scale(1.1) rotate(240deg);
+          }
+          70% {
+            opacity: 0.4;
+            transform: translate(-50%, -24px) scale(0.7) rotate(320deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(-50%, -28px) scale(0.35) rotate(390deg);
+          }
+        }
+
+        @keyframes miniStarFloat6 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          15% {
+            opacity: 0.85;
+            transform: translate(2px, 5px) scale(0.95) rotate(-65deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(4px, 11px) scale(1.2) rotate(-140deg);
+          }
+          50% {
+            opacity: 0.65;
+            transform: translate(6px, 16px) scale(0.9) rotate(-220deg);
+          }
+          70% {
+            opacity: 0.35;
+            transform: translate(8px, 21px) scale(0.6) rotate(-300deg);
+          }
+          90% {
+            opacity: 0.1;
+            transform: translate(9px, 25px) scale(0.28) rotate(-360deg);
+          }
+        }
+
+        /* Анимации для искорок */
+        @keyframes sparkleFloat1 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, -50%) scale(0);
+          }
+          25% {
+            opacity: 1;
+            transform: translate(-7px, -50%) scale(2);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(-14px, -50%) scale(1.5);
+          }
+          80% {
+            opacity: 0.2;
+            transform: translate(-20px, -50%) scale(0.8);
+          }
+        }
+
+        @keyframes sparkleFloat2 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, -50%) scale(0);
+          }
+          25% {
+            opacity: 1;
+            transform: translate(7px, -50%) scale(2);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(14px, -50%) scale(1.5);
+          }
+          80% {
+            opacity: 0.2;
+            transform: translate(20px, -50%) scale(0.8);
+          }
+        }
+
+        @keyframes sparkleFloat3 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0);
+          }
+          25% {
+            opacity: 1;
+            transform: translate(-3px, -8px) scale(2);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(-6px, -16px) scale(1.5);
+          }
+          80% {
+            opacity: 0.2;
+            transform: translate(-9px, -22px) scale(0.8);
+          }
+        }
+
+        @keyframes sparkleFloat4 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0);
+          }
+          25% {
+            opacity: 1;
+            transform: translate(3px, 8px) scale(2);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(6px, 16px) scale(1.5);
+          }
+          80% {
+            opacity: 0.2;
+            transform: translate(9px, 22px) scale(0.8);
+          }
         }
 
         /* FAB */
