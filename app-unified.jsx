@@ -366,6 +366,7 @@ export default function ProjectsUnified() {
   const ProjectCard = ({ project, index }) => {
     const progress = Math.min((project.funded / project.goal) * 100, 100);
     const isOverfunded = project.funded > project.goal;
+    const donateAmount = Math.round(project.goal * 0.05);
 
     const getCardIcon = () => {
       if (project.icon === 'message') return MessageCircle;
@@ -448,7 +449,7 @@ export default function ProjectsUnified() {
               <span className="donate-text">Поддержать</span>
               <div className="donate-amount">
                 <TelegramStar size={20} color="black" className="donate-star" />
-                <span className="donate-number">5</span>
+                <span className="donate-number">{donateAmount}</span>
               </div>
               <ArrowUpRight className="donate-arrow" size={20} strokeWidth={2.5} />
             </button>
@@ -563,11 +564,11 @@ export default function ProjectsUnified() {
         <div className="header-content">
           <div className="header-text">
             <div className="greeting">
-              <span className="greeting-text">DonPlat</span>
+              <span className="greeting-text">Referendum</span>
               <div className="greeting-line" />
             </div>
             <h1 className="page-title">
-              <span className="title-main">Артур</span>
+              <span className="title-main">Bogdan</span>
               <span className="title-sub">Проекты & Идеи</span>
             </h1>
           </div>
