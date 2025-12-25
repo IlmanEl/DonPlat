@@ -15,9 +15,10 @@ const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', classN
         viewBox="0 0 980 938"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', width: '100%', height: '100%' }}
+        style={{ display: 'block', width: '100%', height: '100%', position: 'relative', zIndex: 2 }}
         preserveAspectRatio="xMidYMid meet"
         shapeRendering="geometricPrecision"
+        className="main-telegram-star"
       >
         <defs>
           <linearGradient id={uniqueId} x1="490" y1="0" x2="490" y2="938" gradientUnits="userSpaceOnUse">
@@ -61,60 +62,125 @@ const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', classN
       </svg>
       {withParticles && (
         <>
-          {/* Маленькие звездочки Telegram */}
+          {/* Маленькие звездочки Telegram - burst effect */}
           <div className="star-particle mini-tg-star mini-tg-star-1">
-            <svg width="7" height="7" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+            <svg width="5" height="5" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
           <div className="star-particle mini-tg-star mini-tg-star-2">
-            <svg width="9" height="9" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+            <svg width="7" height="7" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
           <div className="star-particle mini-tg-star mini-tg-star-3">
+            <svg width="4" height="4" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-tg-star mini-tg-star-4">
             <svg width="6" height="6" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
-
-          {/* Четырехконечные звездочки */}
-          <div className="star-particle four-point-star four-star-1">
-            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+          <div className="star-particle mini-tg-star mini-tg-star-5">
+            <svg width="5" height="5" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
-          <div className="star-particle four-point-star four-star-2">
+          <div className="star-particle mini-tg-star mini-tg-star-6">
+            <svg width="4" height="4" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-tg-star mini-tg-star-7">
+            <svg width="6" height="6" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle mini-tg-star mini-tg-star-8">
+            <svg width="5" height="5" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
+              <path d={starPath} fill="currentColor"/>
+            </svg>
+          </div>
+
+          {/* Четырехконечные звездочки - burst effect */}
+          <div className="star-particle four-point-star four-star-1">
             <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
             </svg>
           </div>
-          <div className="star-particle four-point-star four-star-3">
-            <svg width="7" height="7" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
-            </svg>
-          </div>
-          <div className="star-particle four-point-star four-star-4">
+          <div className="star-particle four-point-star four-star-2">
             <svg width="4" height="4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
             </svg>
           </div>
+          <div className="star-particle four-point-star four-star-3">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-4">
+            <svg width="3" height="3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
           <div className="star-particle four-point-star four-star-5">
+            <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-6">
+            <svg width="4" height="4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-7">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-8">
+            <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-9">
+            <svg width="4" height="4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-10">
+            <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-11">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-12">
+            <svg width="3" height="3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-13">
+            <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-14">
+            <svg width="4" height="4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-15">
             <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
             </svg>
           </div>
 
-          {/* Искорки-точки */}
-          <div className="star-particle sparkle sparkle-1">
-            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
-          </div>
-          <div className="star-particle sparkle sparkle-2">
-            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
-          </div>
-          <div className="star-particle sparkle sparkle-3">
-            <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'currentColor' }}></div>
-          </div>
         </>
       )}
     </div>
@@ -144,7 +210,7 @@ export default function ProjectsUnified() {
   const [projects] = useState([
     {
       id: 1,
-      title: 'Лучше до 30 я думаю делать запросы',
+      title: 'Куда бы вложил $1000 прямо сейчас?',
       funded: 85,
       goal: 100,
       supporters: 34,
@@ -155,7 +221,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 2,
-      title: 'Куда бы вложил $1000 прямо сейчас?',
+      title: 'Кого из блогеров смотришь и почему?',
       funded: 92,
       goal: 100,
       supporters: 47,
@@ -166,7 +232,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 3,
-      title: 'Кого из блогеров смотришь и почему?',
+      title: 'Как ты справляешься с выгоранием?',
       funded: 120,
       goal: 100,
       supporters: 56,
@@ -177,7 +243,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 4,
-      title: 'Как ты справляешься с выгоранием?',
+      title: 'Покажи экран: какими аппами живешь?',
       funded: 78,
       goal: 100,
       supporters: 29,
@@ -188,7 +254,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 5,
-      title: 'Покажи экран: какими аппами живешь?',
+      title: 'Что думаешь про твит Маска?',
       funded: 65,
       goal: 100,
       supporters: 23,
@@ -198,7 +264,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 6,
-      title: 'Что думаешь про твит Маска?',
+      title: 'Лучшая покупка до $100, которую юзаешь каждый день',
       funded: 110,
       goal: 100,
       supporters: 62,
@@ -208,7 +274,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 7,
-      title: 'Лучшая покупка до $100, которую юзаешь каждый день',
+      title: 'Разбери интервью у Дудя. Кто прав?',
       funded: 88,
       goal: 100,
       supporters: 41,
@@ -218,7 +284,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 8,
-      title: 'Разбери интервью у Дудя. Кто прав?',
+      title: 'Тиндер в Европе: Реально найти кого-то?',
       funded: 95,
       goal: 100,
       supporters: 52,
@@ -229,7 +295,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 9,
-      title: 'Тиндер в Европе: Реально найти кого-то?',
+      title: 'Твой самый дорогой факап?',
       funded: 73,
       goal: 100,
       supporters: 31,
@@ -239,7 +305,7 @@ export default function ProjectsUnified() {
     },
     {
       id: 10,
-      title: 'Твой самый дорогой факап?',
+      title: 'Куда бы вложил $1000 прямо сейчас?',
       funded: 82,
       goal: 100,
       supporters: 38,
@@ -1388,7 +1454,7 @@ export default function ProjectsUnified() {
         .title {
           position: relative;
           font-family: 'Manrope', sans-serif;
-          font-size: clamp(26px, 5.5vw, 34px);
+          font-size: clamp(26px, 5.5vw, 30px);
           line-height: 1.2;
           font-weight: 700;
           color: var(--color-text);
@@ -1458,10 +1524,11 @@ export default function ProjectsUnified() {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           color: var(--color-text-dim);
-          transform: translateY(1px);
+          transform: translateY(7px) translateX(-8px);
         }
 
         .overfunded-badge {
+          transform: translateY(4px) translateX(-7px);
           padding: 5px 10px;
           background: var(--color-success);
           border-radius: 6px;
@@ -2087,22 +2154,71 @@ export default function ProjectsUnified() {
           flex-shrink: 0;
         }
 
+        /* Main star - above particles with subtle glow */
+        .main-telegram-star {
+          position: relative;
+          z-index: 2;
+          filter: drop-shadow(0 0 8px rgba(255, 200, 55, 0.4)) drop-shadow(0 0 16px rgba(255, 168, 38, 0.2));
+        }
+
         .star-particle {
           position: absolute;
           opacity: 0;
           pointer-events: none;
           will-change: transform, opacity;
+          z-index: 1;
         }
 
-        /* Цвета частичек в темной и светлой темах */
+        /* Цвета частичек - золотые тона с градацией */
         .app.dark .star-particle {
-          color: #FFE17B;
-          filter: drop-shadow(0 0 6px rgba(255, 225, 123, 0.8));
+          color: #FFD700;
+          filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
         }
 
         .app.light .star-particle {
-          color: #FF8C00;
-          filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.7));
+          color: #FFC837;
+          filter: drop-shadow(0 0 3px rgba(255, 200, 55, 0.5));
+        }
+
+        /* Вариации золотых цветов для глубины */
+        .app.dark .mini-tg-star-1,
+        .app.dark .mini-tg-star-3,
+        .app.dark .mini-tg-star-5,
+        .app.dark .mini-tg-star-7 {
+          color: #FFC837;
+          filter: drop-shadow(0 0 3px rgba(255, 200, 55, 0.5));
+        }
+
+        .app.dark .four-star-2,
+        .app.dark .four-star-5,
+        .app.dark .four-star-8,
+        .app.dark .four-star-11,
+        .app.dark .four-star-14 {
+          color: #FFBB33;
+          filter: drop-shadow(0 0 3px rgba(255, 187, 51, 0.4));
+        }
+
+        .app.dark .four-star-3,
+        .app.dark .four-star-7,
+        .app.dark .four-star-12 {
+          color: #FFB020;
+          filter: drop-shadow(0 0 2px rgba(255, 176, 32, 0.4));
+        }
+
+        .app.light .mini-tg-star-2,
+        .app.light .mini-tg-star-4,
+        .app.light .mini-tg-star-6,
+        .app.light .mini-tg-star-8 {
+          color: #FFBB33;
+          filter: drop-shadow(0 0 2px rgba(255, 187, 51, 0.4));
+        }
+
+        .app.light .four-star-1,
+        .app.light .four-star-4,
+        .app.light .four-star-9,
+        .app.light .four-star-13 {
+          color: #FFA726;
+          filter: drop-shadow(0 0 2px rgba(255, 167, 38, 0.4));
         }
 
         /* Маленькие звездочки Telegram */
@@ -2112,22 +2228,53 @@ export default function ProjectsUnified() {
           justify-content: center;
         }
 
+        /* Mini Telegram stars - radial burst effect */
         .mini-tg-star-1 {
-          top: -10px;
-          left: -8px;
-          animation: miniStarFloat1 4s ease-in-out infinite;
+          top: 50%;
+          left: 50%;
+          animation: burstTopRight 2.6s ease-out infinite;
         }
 
         .mini-tg-star-2 {
-          top: -12px;
-          right: -10px;
-          animation: miniStarFloat2 4.3s ease-in-out infinite 0.7s;
+          top: 50%;
+          left: 50%;
+          animation: burstRight 2.8s ease-out infinite 0.2s;
         }
 
         .mini-tg-star-3 {
-          bottom: -8px;
+          top: 50%;
           left: 50%;
-          animation: miniStarFloat3 4.1s ease-in-out infinite 1.4s;
+          animation: burstBottomRight 2.5s ease-out infinite 0.4s;
+        }
+
+        .mini-tg-star-4 {
+          top: 50%;
+          left: 50%;
+          animation: burstBottomLeft 2.7s ease-out infinite 0.6s;
+        }
+
+        .mini-tg-star-5 {
+          top: 50%;
+          left: 50%;
+          animation: burstLeft 2.9s ease-out infinite 0.8s;
+        }
+
+        .mini-tg-star-6 {
+          top: 50%;
+          left: 50%;
+          animation: burstTopLeft 2.4s ease-out infinite 1s;
+        }
+
+        .mini-tg-star-7 {
+          top: 50%;
+          left: 50%;
+          animation: burstTop 2.6s ease-out infinite 1.2s;
+        }
+
+        .mini-tg-star-8 {
+          top: 50%;
+          left: 50%;
+          animation: burstBottom 2.5s ease-out infinite 1.4s;
         }
 
         /* Четырехконечные звездочки */
@@ -2137,381 +2284,321 @@ export default function ProjectsUnified() {
           justify-content: center;
         }
 
+        /* Four-point stars - radial burst pattern with variations */
         .four-star-1 {
-          top: -14px;
-          left: 20%;
-          animation: fourStarFloat1 3.5s ease-in-out infinite 0.3s;
+          top: 50%;
+          left: 50%;
+          animation: burstTopRight 2.3s ease-out infinite 0.1s;
         }
 
         .four-star-2 {
           top: 50%;
-          right: -16px;
-          animation: fourStarFloat2 3.8s ease-in-out infinite 0.9s;
+          left: 50%;
+          animation: burstRight 2.4s ease-out infinite 0.15s;
         }
 
         .four-star-3 {
-          bottom: -14px;
-          right: 25%;
-          animation: fourStarFloat3 3.6s ease-in-out infinite 1.5s;
+          top: 50%;
+          left: 50%;
+          animation: burstBottomRight 2.6s ease-out infinite 0.3s;
         }
 
         .four-star-4 {
           top: 50%;
-          left: -16px;
-          animation: fourStarFloat4 4s ease-in-out infinite 0.5s;
+          left: 50%;
+          animation: burstBottom 2.5s ease-out infinite 0.45s;
         }
 
         .four-star-5 {
-          bottom: -10px;
-          right: -12px;
-          animation: fourStarFloat5 3.7s ease-in-out infinite 1.2s;
-        }
-
-        /* Искорки */
-        .sparkle-1 {
-          top: -18px;
+          top: 50%;
           left: 50%;
-          animation: sparkleFloat1 3.2s ease-in-out infinite 0.4s;
+          animation: burstBottomLeft 2.7s ease-out infinite 0.6s;
         }
 
-        .sparkle-2 {
-          bottom: -18px;
-          left: 30%;
-          animation: sparkleFloat2 3.4s ease-in-out infinite 1.1s;
+        .four-star-6 {
+          top: 50%;
+          left: 50%;
+          animation: burstLeft 2.8s ease-out infinite 0.75s;
         }
 
-        .sparkle-3 {
-          top: 30%;
-          right: -20px;
-          animation: sparkleFloat3 3.3s ease-in-out infinite 1.7s;
+        .four-star-7 {
+          top: 50%;
+          left: 50%;
+          animation: burstTopLeft 2.4s ease-out infinite 0.9s;
         }
 
-        /* Анимации для маленьких звездочек */
-        @keyframes miniStarFloat1 {
-          0%, 100% {
+        .four-star-8 {
+          top: 50%;
+          left: 50%;
+          animation: burstTop 2.5s ease-out infinite 1.05s;
+        }
+
+        .four-star-9 {
+          top: 50%;
+          left: 50%;
+          animation: burstTopRight 2.9s ease-out infinite 1.2s;
+        }
+
+        .four-star-10 {
+          top: 50%;
+          left: 50%;
+          animation: burstRight 2.6s ease-out infinite 1.35s;
+        }
+
+        .four-star-11 {
+          top: 50%;
+          left: 50%;
+          animation: burstBottomRight 2.4s ease-out infinite 1.5s;
+        }
+
+        .four-star-12 {
+          top: 50%;
+          left: 50%;
+          animation: burstBottomLeft 2.7s ease-out infinite 1.65s;
+        }
+
+        .four-star-13 {
+          top: 50%;
+          left: 50%;
+          animation: burstLeft 2.5s ease-out infinite 1.8s;
+        }
+
+        .four-star-14 {
+          top: 50%;
+          left: 50%;
+          animation: burstTopLeft 2.8s ease-out infinite 1.95s;
+        }
+
+        .four-star-15 {
+          top: 50%;
+          left: 50%;
+          animation: burstTop 2.3s ease-out infinite 2.1s;
+        }
+
+
+        /* Radial burst animations - 8 directions */
+
+        /* Right direction (0°) */
+        @keyframes burstRight {
+          0% {
             opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
           }
           15% {
             opacity: 0.9;
-            transform: translate(-3px, -5px) scale(1) rotate(60deg);
+            transform: translate(calc(-50% + 5px), -50%) scale(0.85) rotate(90deg);
           }
           30% {
             opacity: 1;
-            transform: translate(-5px, -10px) scale(1.2) rotate(120deg);
+            transform: translate(calc(-50% + 12px), -50%) scale(1) rotate(180deg);
           }
-          50% {
-            opacity: 0.7;
-            transform: translate(-7px, -16px) scale(0.9) rotate(200deg);
-          }
-          70% {
-            opacity: 0.4;
-            transform: translate(-9px, -22px) scale(0.6) rotate(280deg);
-          }
-          90% {
-            opacity: 0.1;
-            transform: translate(-10px, -26px) scale(0.3) rotate(340deg);
-          }
-        }
-
-        @keyframes miniStarFloat2 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          15% {
-            opacity: 0.9;
-            transform: translate(3px, -5px) scale(1) rotate(-50deg);
-          }
-          30% {
-            opacity: 1;
-            transform: translate(6px, -10px) scale(1.3) rotate(-110deg);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(8px, -15px) scale(1) rotate(-190deg);
-          }
-          70% {
-            opacity: 0.4;
-            transform: translate(10px, -20px) scale(0.7) rotate(-270deg);
-          }
-          90% {
-            opacity: 0.1;
-            transform: translate(11px, -24px) scale(0.35) rotate(-330deg);
-          }
-        }
-
-        @keyframes miniStarFloat3 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          15% {
-            opacity: 0.85;
-            transform: translate(-2px, 4px) scale(0.9) rotate(40deg);
-          }
-          30% {
-            opacity: 1;
-            transform: translate(-4px, 9px) scale(1.15) rotate(100deg);
-          }
-          50% {
-            opacity: 0.65;
-            transform: translate(-6px, 14px) scale(0.85) rotate(180deg);
-          }
-          70% {
-            opacity: 0.35;
-            transform: translate(-8px, 19px) scale(0.55) rotate(260deg);
-          }
-          90% {
-            opacity: 0.1;
-            transform: translate(-9px, 23px) scale(0.25) rotate(320deg);
-          }
-        }
-
-        @keyframes miniStarFloat4 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          15% {
-            opacity: 0.9;
-            transform: translate(3px, 4px) scale(1.05) rotate(-55deg);
-          }
-          30% {
-            opacity: 1;
-            transform: translate(6px, 10px) scale(1.25) rotate(-125deg);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(8px, 15px) scale(0.95) rotate(-210deg);
-          }
-          70% {
-            opacity: 0.4;
-            transform: translate(10px, 20px) scale(0.65) rotate(-290deg);
-          }
-          90% {
-            opacity: 0.1;
-            transform: translate(11px, 24px) scale(0.3) rotate(-350deg);
-          }
-        }
-
-        @keyframes miniStarFloat5 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(-50%, 0) scale(0) rotate(0deg);
-          }
-          15% {
-            opacity: 0.9;
-            transform: translate(-50%, -6px) scale(1) rotate(70deg);
-          }
-          30% {
-            opacity: 1;
-            transform: translate(-50%, -12px) scale(1.4) rotate(150deg);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(-50%, -18px) scale(1.1) rotate(240deg);
-          }
-          70% {
-            opacity: 0.4;
-            transform: translate(-50%, -24px) scale(0.7) rotate(320deg);
-          }
-          90% {
-            opacity: 0.1;
-            transform: translate(-50%, -28px) scale(0.35) rotate(390deg);
-          }
-        }
-
-        /* Анимации для четырехконечных звездочек */
-        @keyframes fourStarFloat1 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          20% {
-            opacity: 1;
-            transform: translate(-2px, -8px) scale(1.3) rotate(90deg);
-          }
-          40% {
-            opacity: 0.8;
-            transform: translate(-4px, -14px) scale(1) rotate(180deg);
-          }
-          65% {
-            opacity: 0.4;
-            transform: translate(-5px, -20px) scale(0.6) rotate(270deg);
-          }
-          85% {
-            opacity: 0.1;
-            transform: translate(-6px, -24px) scale(0.3) rotate(360deg);
-          }
-        }
-
-        @keyframes fourStarFloat2 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, -50%) scale(0) rotate(0deg);
-          }
-          20% {
-            opacity: 1;
-            transform: translate(7px, -50%) scale(1.4) rotate(-90deg);
-          }
-          40% {
-            opacity: 0.8;
-            transform: translate(13px, -50%) scale(1.1) rotate(-180deg);
-          }
-          65% {
-            opacity: 0.4;
-            transform: translate(18px, -50%) scale(0.7) rotate(-270deg);
-          }
-          85% {
-            opacity: 0.1;
-            transform: translate(22px, -50%) scale(0.35) rotate(-360deg);
-          }
-        }
-
-        @keyframes fourStarFloat3 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          20% {
-            opacity: 1;
-            transform: translate(3px, 7px) scale(1.2) rotate(80deg);
-          }
-          40% {
-            opacity: 0.8;
-            transform: translate(5px, 13px) scale(0.95) rotate(160deg);
-          }
-          65% {
-            opacity: 0.4;
-            transform: translate(7px, 19px) scale(0.65) rotate(240deg);
-          }
-          85% {
-            opacity: 0.1;
-            transform: translate(8px, 23px) scale(0.3) rotate(320deg);
-          }
-        }
-
-        @keyframes fourStarFloat4 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, -50%) scale(0) rotate(0deg);
-          }
-          20% {
-            opacity: 1;
-            transform: translate(-7px, -50%) scale(1.35) rotate(95deg);
-          }
-          40% {
-            opacity: 0.8;
-            transform: translate(-13px, -50%) scale(1.05) rotate(190deg);
-          }
-          65% {
-            opacity: 0.4;
-            transform: translate(-18px, -50%) scale(0.7) rotate(285deg);
-          }
-          85% {
-            opacity: 0.1;
-            transform: translate(-22px, -50%) scale(0.35) rotate(380deg);
-          }
-        }
-
-        @keyframes fourStarFloat5 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0) rotate(0deg);
-          }
-          20% {
-            opacity: 1;
-            transform: translate(4px, 6px) scale(1.25) rotate(-85deg);
-          }
-          40% {
-            opacity: 0.8;
-            transform: translate(7px, 12px) scale(1) rotate(-170deg);
-          }
-          65% {
-            opacity: 0.4;
-            transform: translate(9px, 18px) scale(0.65) rotate(-255deg);
-          }
-          85% {
-            opacity: 0.1;
-            transform: translate(11px, 22px) scale(0.3) rotate(-340deg);
-          }
-        }
-
-        /* Анимации для искорок */
-        @keyframes sparkleFloat1 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, -50%) scale(0);
-          }
-          25% {
-            opacity: 1;
-            transform: translate(-7px, -50%) scale(2);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(-14px, -50%) scale(1.5);
-          }
-          80% {
-            opacity: 0.2;
-            transform: translate(-20px, -50%) scale(0.8);
-          }
-        }
-
-        @keyframes sparkleFloat2 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, -50%) scale(0);
-          }
-          25% {
-            opacity: 1;
-            transform: translate(7px, -50%) scale(2);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(14px, -50%) scale(1.5);
-          }
-          80% {
-            opacity: 0.2;
-            transform: translate(20px, -50%) scale(0.8);
-          }
-        }
-
-        @keyframes sparkleFloat3 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, 0) scale(0);
-          }
-          25% {
-            opacity: 1;
-            transform: translate(-3px, -8px) scale(2);
-          }
-          50% {
-            opacity: 0.7;
-            transform: translate(-6px, -16px) scale(1.5);
-          }
-          80% {
-            opacity: 0.2;
-            transform: translate(-9px, -22px) scale(0.8);
-          }
-        }
-
-        @keyframes sparkleFloat3 {
-          0%, 100% {
-            opacity: 0;
-            transform: translate(0, -50%) scale(0);
-          }
-          30% {
-            opacity: 1;
-            transform: translate(9px, -50%) scale(2.2);
-          }
-          55% {
+          60% {
             opacity: 0.6;
-            transform: translate(17px, -50%) scale(1.4);
+            transform: translate(calc(-50% + 20px), -50%) scale(0.8) rotate(270deg);
           }
           85% {
-            opacity: 0.15;
-            transform: translate(24px, -50%) scale(0.7);
+            opacity: 0.2;
+            transform: translate(calc(-50% + 26px), -50%) scale(0.5) rotate(360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% + 30px), -50%) scale(0.2) rotate(450deg);
+          }
+        }
+
+        /* Top-Right direction (45°) */
+        @keyframes burstTopRight {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(calc(-50% + 4px), calc(-50% - 4px)) scale(0.85) rotate(90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(calc(-50% + 9px), calc(-50% - 9px)) scale(1) rotate(180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(calc(-50% + 16px), calc(-50% - 16px)) scale(0.8) rotate(270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(calc(-50% + 21px), calc(-50% - 21px)) scale(0.5) rotate(360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% + 24px), calc(-50% - 24px)) scale(0.2) rotate(450deg);
+          }
+        }
+
+        /* Top direction (90°) */
+        @keyframes burstTop {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(-50%, calc(-50% - 5px)) scale(0.85) rotate(-90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(-50%, calc(-50% - 12px)) scale(1) rotate(-180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(-50%, calc(-50% - 20px)) scale(0.8) rotate(-270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(-50%, calc(-50% - 26px)) scale(0.5) rotate(-360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, calc(-50% - 30px)) scale(0.2) rotate(-450deg);
+          }
+        }
+
+        /* Top-Left direction (135°) */
+        @keyframes burstTopLeft {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(calc(-50% - 4px), calc(-50% - 4px)) scale(0.85) rotate(-90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(calc(-50% - 9px), calc(-50% - 9px)) scale(1) rotate(-180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(calc(-50% - 16px), calc(-50% - 16px)) scale(0.8) rotate(-270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(calc(-50% - 21px), calc(-50% - 21px)) scale(0.5) rotate(-360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% - 24px), calc(-50% - 24px)) scale(0.2) rotate(-450deg);
+          }
+        }
+
+        /* Left direction (180°) */
+        @keyframes burstLeft {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(calc(-50% - 5px), -50%) scale(0.85) rotate(90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(calc(-50% - 12px), -50%) scale(1) rotate(180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(calc(-50% - 20px), -50%) scale(0.8) rotate(270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(calc(-50% - 26px), -50%) scale(0.5) rotate(360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% - 30px), -50%) scale(0.2) rotate(450deg);
+          }
+        }
+
+        /* Bottom-Left direction (225°) */
+        @keyframes burstBottomLeft {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(calc(-50% - 4px), calc(-50% + 4px)) scale(0.85) rotate(90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(calc(-50% - 9px), calc(-50% + 9px)) scale(1) rotate(180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(calc(-50% - 16px), calc(-50% + 16px)) scale(0.8) rotate(270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(calc(-50% - 21px), calc(-50% + 21px)) scale(0.5) rotate(360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% - 24px), calc(-50% + 24px)) scale(0.2) rotate(450deg);
+          }
+        }
+
+        /* Bottom direction (270°) */
+        @keyframes burstBottom {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(-50%, calc(-50% + 5px)) scale(0.85) rotate(-90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(-50%, calc(-50% + 12px)) scale(1) rotate(-180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(-50%, calc(-50% + 20px)) scale(0.8) rotate(-270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(-50%, calc(-50% + 26px)) scale(0.5) rotate(-360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, calc(-50% + 30px)) scale(0.2) rotate(-450deg);
+          }
+        }
+
+        /* Bottom-Right direction (315°) */
+        @keyframes burstBottomRight {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+          }
+          15% {
+            opacity: 0.9;
+            transform: translate(calc(-50% + 4px), calc(-50% + 4px)) scale(0.85) rotate(-90deg);
+          }
+          30% {
+            opacity: 1;
+            transform: translate(calc(-50% + 9px), calc(-50% + 9px)) scale(1) rotate(-180deg);
+          }
+          60% {
+            opacity: 0.6;
+            transform: translate(calc(-50% + 16px), calc(-50% + 16px)) scale(0.8) rotate(-270deg);
+          }
+          85% {
+            opacity: 0.2;
+            transform: translate(calc(-50% + 21px), calc(-50% + 21px)) scale(0.5) rotate(-360deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(calc(-50% + 24px), calc(-50% + 24px)) scale(0.2) rotate(-450deg);
           }
         }
 
