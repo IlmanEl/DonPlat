@@ -8,22 +8,31 @@ const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', classN
   const starPath = "M438.875 31.7736C459.784 -10.5911 520.194 -10.5913 541.103 31.7736L648.359 249.101C656.662 265.924 672.712 277.584 691.277 280.281L931.111 315.132C977.864 321.926 996.532 379.38 962.701 412.357L789.155 581.522C775.721 594.617 769.591 613.484 772.763 631.974L813.731 870.839C821.718 917.403 772.844 952.911 731.027 930.927L516.513 818.151C499.907 809.421 480.069 809.421 463.464 818.151L248.95 930.927C207.133 952.911 158.26 917.403 166.246 870.839L198.937 680.235L201 676.5C209.599 667.475 219.641 659.945 230.713 654.218L344.488 595.368L515.206 511.395C523.632 507.25 528.226 497.965 526.409 488.752C524.229 477.695 513.623 470.397 502.517 472.312L290.488 508.868L199.106 525.241C180.273 528.616 160.919 527.679 142.5 522.5L101.306 494.266L17.2754 412.357C-16.555 379.38 2.11369 321.926 48.8663 315.132L288.7 280.281C307.265 277.584 323.314 265.924 331.617 249.101L438.875 31.7736Z";
 
   return (
-    <div className={`telegram-star-container ${className}`} style={{ width: size, height: size, position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className={`telegram-star-container ${className}`} style={{ width: size, height: size, position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
       <svg
         width={size}
         height={size}
         viewBox="0 0 980 938"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block' }}
+        style={{ display: 'block', width: '100%', height: '100%' }}
         preserveAspectRatio="xMidYMid meet"
         shapeRendering="geometricPrecision"
       >
         <defs>
           <linearGradient id={uniqueId} x1="490" y1="0" x2="490" y2="938" gradientUnits="userSpaceOnUse">
-            {color === 'white' ? (
+            {color === 'black' ? (
+              <>
+                <stop offset="0%" stopColor="#3A3A3A" />
+                <stop offset="25%" stopColor="#2D2D2D" />
+                <stop offset="50%" stopColor="#1F1F1F" />
+                <stop offset="75%" stopColor="#0F0F0F" />
+                <stop offset="100%" stopColor="#050505" />
+              </>
+            ) : color === 'white' ? (
               <>
                 <stop offset="0%" stopColor="#FFFFFF" />
+                <stop offset="50%" stopColor="#FAFAFA" />
                 <stop offset="100%" stopColor="#F5F5F5" />
               </>
             ) : (
@@ -37,7 +46,7 @@ const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', classN
             )}
           </linearGradient>
           <filter id={`glow-${uniqueId}`} x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
             <feMerge>
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -47,55 +56,64 @@ const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', classN
         <path
           d={starPath}
           fill={`url(#${uniqueId})`}
-          filter={color === 'white' ? 'none' : `url(#glow-${uniqueId})`}
+          filter={(color === 'white' || color === 'black') ? 'none' : `url(#glow-${uniqueId})`}
         />
       </svg>
       {withParticles && (
         <>
-          {/* Маленькие звездочки */}
-          <div className="star-particle mini-star mini-star-1">
-            <svg width="8" height="8" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
-              <path d={starPath} fill="currentColor"/>
-            </svg>
-          </div>
-          <div className="star-particle mini-star mini-star-2">
-            <svg width="10" height="10" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
-              <path d={starPath} fill="currentColor"/>
-            </svg>
-          </div>
-          <div className="star-particle mini-star mini-star-3">
+          {/* Маленькие звездочки Telegram */}
+          <div className="star-particle mini-tg-star mini-tg-star-1">
             <svg width="7" height="7" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
-          <div className="star-particle mini-star mini-star-4">
+          <div className="star-particle mini-tg-star mini-tg-star-2">
             <svg width="9" height="9" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
-          <div className="star-particle mini-star mini-star-5">
+          <div className="star-particle mini-tg-star mini-tg-star-3">
             <svg width="6" height="6" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
               <path d={starPath} fill="currentColor"/>
             </svg>
           </div>
-          <div className="star-particle mini-star mini-star-6">
-            <svg width="8" height="8" viewBox="0 0 980 938" fill="none" xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision">
-              <path d={starPath} fill="currentColor"/>
+
+          {/* Четырехконечные звездочки */}
+          <div className="star-particle four-point-star four-star-1">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-2">
+            <svg width="5" height="5" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-3">
+            <svg width="7" height="7" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-4">
+            <svg width="4" height="4" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div className="star-particle four-point-star four-star-5">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 0L6.5 5.5L12 6L6.5 6.5L6 12L5.5 6.5L0 6L5.5 5.5L6 0Z" fill="currentColor"/>
             </svg>
           </div>
 
-          {/* Искорки */}
+          {/* Искорки-точки */}
           <div className="star-particle sparkle sparkle-1">
-            <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'currentColor' }}></div>
+            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
           </div>
           <div className="star-particle sparkle sparkle-2">
             <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
           </div>
           <div className="star-particle sparkle sparkle-3">
             <div style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'currentColor' }}></div>
-          </div>
-          <div className="star-particle sparkle sparkle-4">
-            <div style={{ width: '2px', height: '2px', borderRadius: '50%', background: 'currentColor' }}></div>
           </div>
         </>
       )}
@@ -340,7 +358,7 @@ export default function ProjectsUnified() {
             <div className="progress-section">
               <div className="progress-header">
                 <div className="amount-display">
-                  <span className="currency"><TelegramStar size={24} withParticles={true} /></span>
+                  <TelegramStar size={24} withParticles={true} className="progress-star" />
                   <span className="amount">{project.funded}</span>
                   <span className="goal">/{project.goal}</span>
                 {isOverfunded && (
@@ -363,7 +381,8 @@ export default function ProjectsUnified() {
             <button className="donate-btn">
               <span className="donate-text">Поддержать</span>
               <div className="donate-amount">
-                5<TelegramStar size={20} color="white" className="donate-star" />
+                <TelegramStar size={20} color="black" className="donate-star" />
+                <span className="donate-number">5</span>
               </div>
               <ArrowUpRight className="donate-arrow" size={20} strokeWidth={2.5} />
             </button>
@@ -444,8 +463,11 @@ export default function ProjectsUnified() {
         </div>
 
         <div className="donor-amount-display">
-          <div className="amount-large" style={{ background: config.gradient }}>
-            {donor.amount.toLocaleString()}<TelegramStar size={18} />
+          <div className="amount-large">
+            <span className="amount-text" style={{ background: config.gradient }}>
+              {donor.amount.toLocaleString()}
+            </span>
+            <TelegramStar size={18} />
           </div>
         </div>
       </div>
@@ -1419,10 +1441,8 @@ export default function ProjectsUnified() {
           gap: 8px;
         }
 
-        .currency {
-          display: flex;
-          align-items: center;
-          position: relative;
+        .progress-star {
+          flex-shrink: 0;
         }
 
         .amount {
@@ -1431,12 +1451,14 @@ export default function ProjectsUnified() {
           line-height: 1;
           color: var(--color-text);
           letter-spacing: 0.5px;
+          transform: translateY(2px);
         }
 
         .goal {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           color: var(--color-text-dim);
+          transform: translateY(1px);
         }
 
         .overfunded-badge {
@@ -1516,15 +1538,15 @@ export default function ProjectsUnified() {
         }
 
         .app.light .donate-btn {
-          background: black;
+          background: #1A1A1A;
           color: white;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
         .donate-btn:hover {
           transform: translateY(-3px);
-          background: var(--gradient-main);
-          color: white;
+          background: var(--gradient-main) !important;
+          color: white !important;
         }
 
         .app.dark .donate-btn:hover {
@@ -1535,17 +1557,34 @@ export default function ProjectsUnified() {
           box-shadow: 0 0 20px rgba(255, 107, 53, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
+        /* Черная звезда в темной теме, белая в светлой */
+        .app.light .donate-star {
+          filter: brightness(0) invert(1);
+        }
+
+        /* Звезда становится белой при наведении */
+        .donate-btn:hover .donate-star {
+          filter: brightness(0) invert(1) !important;
+        }
+
         .donate-text {
           flex: 1;
         }
 
         .donate-amount {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 0.5px;
           display: flex;
           align-items: center;
           gap: 6px;
+        }
+
+        .donate-number {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          letter-spacing: 0.5px;
+          line-height: 0.8;
+          display: flex;
+          align-items: center;
+          transform: translateY(1.5px);
         }
 
         .donate-arrow {
@@ -1837,6 +1876,7 @@ export default function ProjectsUnified() {
           display: flex;
           align-items: center;
           gap: 4px;
+          transform: translateY(1px);
         }
 
         .podium-position.first .podium-amount {
@@ -2023,15 +2063,19 @@ export default function ProjectsUnified() {
         }
 
         .amount-large {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          transform: translateY(2px);
+        }
+
+        .amount-text {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 24px;
           line-height: 1;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          display: flex;
-          align-items: center;
-          gap: 4px;
         }
 
         /* TELEGRAM STAR PARTICLES */
@@ -2061,72 +2105,85 @@ export default function ProjectsUnified() {
           filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.7));
         }
 
-        /* Маленькие звездочки */
-        .mini-star {
+        /* Маленькие звездочки Telegram */
+        .mini-tg-star {
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .mini-star-1 {
-          top: -12px;
-          left: -10px;
-          animation: miniStarFloat1 4.5s ease-in-out infinite;
-        }
-
-        .mini-star-2 {
-          top: -14px;
-          right: -12px;
-          animation: miniStarFloat2 4s ease-in-out infinite 0.5s;
-        }
-
-        .mini-star-3 {
-          bottom: -10px;
-          left: -8px;
-          animation: miniStarFloat3 4.3s ease-in-out infinite 1s;
-        }
-
-        .mini-star-4 {
-          bottom: -12px;
-          right: -10px;
-          animation: miniStarFloat4 4.2s ease-in-out infinite 1.5s;
-        }
-
-        .mini-star-5 {
+        .mini-tg-star-1 {
           top: -10px;
-          left: 50%;
-          animation: miniStarFloat5 4.6s ease-in-out infinite 2s;
+          left: -8px;
+          animation: miniStarFloat1 4s ease-in-out infinite;
         }
 
-        .mini-star-6 {
+        .mini-tg-star-2 {
+          top: -12px;
+          right: -10px;
+          animation: miniStarFloat2 4.3s ease-in-out infinite 0.7s;
+        }
+
+        .mini-tg-star-3 {
+          bottom: -8px;
+          left: 50%;
+          animation: miniStarFloat3 4.1s ease-in-out infinite 1.4s;
+        }
+
+        /* Четырехконечные звездочки */
+        .four-point-star {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .four-star-1 {
+          top: -14px;
+          left: 20%;
+          animation: fourStarFloat1 3.5s ease-in-out infinite 0.3s;
+        }
+
+        .four-star-2 {
+          top: 50%;
+          right: -16px;
+          animation: fourStarFloat2 3.8s ease-in-out infinite 0.9s;
+        }
+
+        .four-star-3 {
+          bottom: -14px;
+          right: 25%;
+          animation: fourStarFloat3 3.6s ease-in-out infinite 1.5s;
+        }
+
+        .four-star-4 {
+          top: 50%;
+          left: -16px;
+          animation: fourStarFloat4 4s ease-in-out infinite 0.5s;
+        }
+
+        .four-star-5 {
           bottom: -10px;
-          right: 20%;
-          animation: miniStarFloat6 4.4s ease-in-out infinite 2.5s;
+          right: -12px;
+          animation: fourStarFloat5 3.7s ease-in-out infinite 1.2s;
         }
 
         /* Искорки */
         .sparkle-1 {
-          top: 50%;
-          left: -14px;
-          animation: sparkleFloat1 3.5s ease-in-out infinite 0.3s;
+          top: -18px;
+          left: 50%;
+          animation: sparkleFloat1 3.2s ease-in-out infinite 0.4s;
         }
 
         .sparkle-2 {
-          top: 50%;
-          right: -14px;
-          animation: sparkleFloat2 3.8s ease-in-out infinite 0.8s;
+          bottom: -18px;
+          left: 30%;
+          animation: sparkleFloat2 3.4s ease-in-out infinite 1.1s;
         }
 
         .sparkle-3 {
-          top: -16px;
-          left: 30%;
-          animation: sparkleFloat3 3.6s ease-in-out infinite 1.3s;
-        }
-
-        .sparkle-4 {
-          bottom: -16px;
-          right: 30%;
-          animation: sparkleFloat4 3.7s ease-in-out infinite 1.8s;
+          top: 30%;
+          right: -20px;
+          animation: sparkleFloat3 3.3s ease-in-out infinite 1.7s;
         }
 
         /* Анимации для маленьких звездочек */
@@ -2265,30 +2322,119 @@ export default function ProjectsUnified() {
           }
         }
 
-        @keyframes miniStarFloat6 {
+        /* Анимации для четырехконечных звездочек */
+        @keyframes fourStarFloat1 {
           0%, 100% {
             opacity: 0;
             transform: translate(0, 0) scale(0) rotate(0deg);
           }
-          15% {
-            opacity: 0.85;
-            transform: translate(2px, 5px) scale(0.95) rotate(-65deg);
-          }
-          30% {
+          20% {
             opacity: 1;
-            transform: translate(4px, 11px) scale(1.2) rotate(-140deg);
+            transform: translate(-2px, -8px) scale(1.3) rotate(90deg);
           }
-          50% {
-            opacity: 0.65;
-            transform: translate(6px, 16px) scale(0.9) rotate(-220deg);
+          40% {
+            opacity: 0.8;
+            transform: translate(-4px, -14px) scale(1) rotate(180deg);
           }
-          70% {
-            opacity: 0.35;
-            transform: translate(8px, 21px) scale(0.6) rotate(-300deg);
+          65% {
+            opacity: 0.4;
+            transform: translate(-5px, -20px) scale(0.6) rotate(270deg);
           }
-          90% {
+          85% {
             opacity: 0.1;
-            transform: translate(9px, 25px) scale(0.28) rotate(-360deg);
+            transform: translate(-6px, -24px) scale(0.3) rotate(360deg);
+          }
+        }
+
+        @keyframes fourStarFloat2 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, -50%) scale(0) rotate(0deg);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(7px, -50%) scale(1.4) rotate(-90deg);
+          }
+          40% {
+            opacity: 0.8;
+            transform: translate(13px, -50%) scale(1.1) rotate(-180deg);
+          }
+          65% {
+            opacity: 0.4;
+            transform: translate(18px, -50%) scale(0.7) rotate(-270deg);
+          }
+          85% {
+            opacity: 0.1;
+            transform: translate(22px, -50%) scale(0.35) rotate(-360deg);
+          }
+        }
+
+        @keyframes fourStarFloat3 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(3px, 7px) scale(1.2) rotate(80deg);
+          }
+          40% {
+            opacity: 0.8;
+            transform: translate(5px, 13px) scale(0.95) rotate(160deg);
+          }
+          65% {
+            opacity: 0.4;
+            transform: translate(7px, 19px) scale(0.65) rotate(240deg);
+          }
+          85% {
+            opacity: 0.1;
+            transform: translate(8px, 23px) scale(0.3) rotate(320deg);
+          }
+        }
+
+        @keyframes fourStarFloat4 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, -50%) scale(0) rotate(0deg);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(-7px, -50%) scale(1.35) rotate(95deg);
+          }
+          40% {
+            opacity: 0.8;
+            transform: translate(-13px, -50%) scale(1.05) rotate(190deg);
+          }
+          65% {
+            opacity: 0.4;
+            transform: translate(-18px, -50%) scale(0.7) rotate(285deg);
+          }
+          85% {
+            opacity: 0.1;
+            transform: translate(-22px, -50%) scale(0.35) rotate(380deg);
+          }
+        }
+
+        @keyframes fourStarFloat5 {
+          0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0) scale(0) rotate(0deg);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(4px, 6px) scale(1.25) rotate(-85deg);
+          }
+          40% {
+            opacity: 0.8;
+            transform: translate(7px, 12px) scale(1) rotate(-170deg);
+          }
+          65% {
+            opacity: 0.4;
+            transform: translate(9px, 18px) scale(0.65) rotate(-255deg);
+          }
+          85% {
+            opacity: 0.1;
+            transform: translate(11px, 22px) scale(0.3) rotate(-340deg);
           }
         }
 
@@ -2350,22 +2496,22 @@ export default function ProjectsUnified() {
           }
         }
 
-        @keyframes sparkleFloat4 {
+        @keyframes sparkleFloat3 {
           0%, 100% {
             opacity: 0;
-            transform: translate(0, 0) scale(0);
+            transform: translate(0, -50%) scale(0);
           }
-          25% {
+          30% {
             opacity: 1;
-            transform: translate(3px, 8px) scale(2);
+            transform: translate(9px, -50%) scale(2.2);
           }
-          50% {
-            opacity: 0.7;
-            transform: translate(6px, 16px) scale(1.5);
+          55% {
+            opacity: 0.6;
+            transform: translate(17px, -50%) scale(1.4);
           }
-          80% {
-            opacity: 0.2;
-            transform: translate(9px, 22px) scale(0.8);
+          85% {
+            opacity: 0.15;
+            transform: translate(24px, -50%) scale(0.7);
           }
         }
 
