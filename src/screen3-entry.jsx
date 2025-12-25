@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ProjectsUnified from './src/app-unified.jsx';
+import TopicDetails from './topic-details.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ProjectsUnified />
+    <TopicDetails />
   </React.StrictMode>
 );

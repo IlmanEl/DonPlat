@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ProjectsUnified from './src/app-unified.jsx';
+import BloggerDashboard from './dashboard.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ProjectsUnified />
+    <BloggerDashboard />
   </React.StrictMode>
 );
