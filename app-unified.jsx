@@ -233,8 +233,8 @@ export default function ProjectsUnified() {
     {
       id: 3,
       title: 'Как ты справляешься с выгоранием?',
-      funded: 1200,
-      goal: 2000,
+      funded: 745,
+      goal: 500,
       supporters: 56,
       completed: true,
       background: '/abstract-green.png',
