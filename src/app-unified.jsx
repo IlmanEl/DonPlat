@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Users, TrendingUp, Award, Crown, Sparkles, ArrowUpRight, Zap, MessageCircle, Heart, Moon, Sun, Check } from 'lucide-react';
+import { Plus, Users, TrendingUp, Award, Crown, Sparkles, ArrowUpRight, Zap, MessageCircle, Heart, Check } from 'lucide-react';
 
 const TelegramStar = ({ size = 20, withParticles = false, color = 'gold', className = '' }) => {
   const uniqueId = `starGradient-${size}-${Math.random().toString(36).substr(2, 9)}`;
@@ -191,21 +191,11 @@ export default function ProjectsUnified() {
   const [activeFilter, setActiveFilter] = useState('active');
   const [showMore, setShowMore] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark] = useState(false); // Light theme by default
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-    }
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
 
   const [projects] = useState([
     {
@@ -543,16 +533,6 @@ export default function ProjectsUnified() {
 
   return (
     <div className={`app ${isDark ? 'dark' : 'light'}`}>
-      {/* Theme Toggle Button */}
-      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-        <div className="theme-toggle-track">
-          <div className="theme-toggle-thumb" />
-          <div className="theme-toggle-icon">
-            {isDark ? <Sun size={16} strokeWidth={2.5} /> : <Moon size={16} strokeWidth={2.5} />}
-          </div>
-        </div>
-      </button>
-
       {/* Header */}
       <header className="header">
         <div className="header-bg">
